@@ -1,10 +1,10 @@
 ---
-title: 'Transaksi dengan Metode POST'
-description: Melakukan pembelian produk menggunakan Metode POST
+title: 'Cek Status Transaksi dengan Metode GET'
+description: Melakukan pengecekan status transaksi
 ---
 
 
-Melakukan pembelian produk menggunakan Metode POST
+Melakukan pengecekan status transaksi
 
 ### Endpoint
 <div style="font-family:monospace;">
@@ -25,17 +25,6 @@ Berikut ini parameter / payload yang di harapkan :
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
-
-```json title=Contoh
-{
-    "ref_id":"tx334234",
-    "produk":"FF5",
-    "tujuan":"034344234",
-    "server_id":"exr33f"
-    "member_code":"MEM3532234432X34",
-    "signature":"f109a98c4f298ade23fb6c1f067dce53", //Formula= md5(ref_id:member_code:kode_produk:tujuan:secret)
-}
-```
 
 ### Sampel Response Gagal
 

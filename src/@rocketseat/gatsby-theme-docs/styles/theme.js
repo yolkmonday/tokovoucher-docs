@@ -12,4 +12,10 @@ export default {
       },
     },
   },
+  fonts: {
+    fontFace: {
+      family: 'sans-serif'
+    },
+    body: 'sans-serif',
+  },
 };

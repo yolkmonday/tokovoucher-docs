@@ -21,7 +21,7 @@ Berikut ini parameter / payload yang di harapkan :
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
 | produk      | Kode produk                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
+| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                     | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |

@@ -9,14 +9,13 @@
 - label: Cek Saldo
   link: '/cek-saldo'
 
-
 - label: Transaksi
   items:
     - label: 'Metode POST'
       link: '/transaksi/post'
     - label: 'Metode GET'
       link: '/transaksi/get'
-    - label: 'Metode GET HTTP Text'
+    - label: 'Metode GET HTTP Text (Otomax, IRS, Dll)'
       link: '/transaksi/get-text'
 
 - label: Status Transaksi

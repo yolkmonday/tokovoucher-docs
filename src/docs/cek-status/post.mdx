@@ -9,7 +9,7 @@ Melakukan pengecekan status transaksi
 ### Endpoint
 <div style="font-family:monospace;">
 <span style="color:white;background:#27ae60;border-radius: 4px;padding: 4px;">POST</span>
-<span style="margin-left:4px;color:#27ae60;background:#c7ffdf;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v2/transaksi</span>
+<span style="margin-left:4px;color:#27ae60;background:#c7ffdf;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi/status</span>
 
 </div>
 
@@ -28,12 +28,10 @@ Berikut ini parameter / payload yang di harapkan :
 
 ```json title=Contoh
 {
-    "ref_id":"tx334234",
-    "produk":"FF5",
-    "tujuan":"034344234",
-    "server_id":"exr33f"
-    "member_code":"MEM3532234432X34",
-    "signature":"f109a98c4f298ade23fb6c1f067dce53", //Formula= md5(ref_id:member_code:kode_produk:tujuan:secret)
+    "signature":"a8f4ea2a1ed3219d623ccb8483714efb",
+    "trx_id":"TRX9364426874202208031",
+    "member_code":"MEM3532234432X34"
+
 }
 ```
 

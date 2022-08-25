@@ -9,8 +9,7 @@ Melakukan pengecekan status transaksi
 ### Endpoint
 <div style="font-family:monospace;">
 <span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
-<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v2/transaksi</span>
-
+<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi/status?trx_id=TRX8077121693202208021&member_code=MEM3532234432X34&signature=cca034aea4c5f9d227cf1c06b25c612f
 </div>
 
 ### Deskripsi
@@ -19,10 +18,7 @@ Berikut ini parameter / payload yang di harapkan :
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| produk      | Kode produk                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
-| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
+| trx_id      | Trx ID anda                                                                                                       | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
 

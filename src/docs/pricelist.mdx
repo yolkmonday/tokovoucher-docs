@@ -19,7 +19,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
+| signature   | Signature dengan formula **md5(member_code:secret)**   Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ### Sampel Response Gagal
 

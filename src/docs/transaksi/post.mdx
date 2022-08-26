@@ -24,7 +24,7 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                     | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
+| signature   | Signature dengan formula **md5(member_code:secret:ref_id)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ```json title=Contoh
 {

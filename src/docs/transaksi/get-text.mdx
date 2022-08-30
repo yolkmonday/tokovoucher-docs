@@ -9,7 +9,7 @@ Melakukan pembelian produk menggunakan Metode GET dan response text untuk softwa
 ### Endpoint
 <div style="font-family:monospace;">
 <span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
-<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi?ref_id=[ref_id]&produk=[kode_produk]&tujuan=[tujuan]&signature=[signature]&member_code=[member_code]&server_id=[server_id]</span>
+<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi?ref_id=[ref_id]&produk=[kode_produk]&tujuan=[tujuan]&secret=[secret]&member_code=[member_code]&server_id=[server_id]</span>
 
 </div>
 
@@ -24,7 +24,7 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(member_code:secret:ref_id)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
+| secret   | Secret Key Anda Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 
 ### Sampel Response Gagal

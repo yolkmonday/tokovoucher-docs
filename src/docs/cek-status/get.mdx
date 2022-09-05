@@ -9,7 +9,7 @@ Melakukan pengecekan status transaksi
 ### Endpoint
 <div style="font-family:monospace;">
 <span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
-<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi/status?trx_id=[trx_id]&member_code=[member_code]&signature=[signature]</span>
+<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/v1/transaksi/status?trx_id=[trx_id]&member_code=[member_code]&secret=[secret]</span>
 </div>
 
 ### Deskripsi
@@ -20,7 +20,7 @@ Berikut ini parameter / payload yang di harapkan :
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | trx_id      | Trx ID anda                                                                                                       | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
+| secret   |  Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ### Sampel Response Gagal
 

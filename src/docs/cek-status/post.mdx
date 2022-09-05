@@ -24,11 +24,11 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(ref_id:member_code:kode_produk:tujuan:secret)**    Note: Secret bisa dilihat pada member area | String    | Ya    |
+| secret   | Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ```json title=Contoh
 {
-    "signature":"a8f4ea2a1ed3219d623ccb8483714efb",
+    "secret":"a8f4ea2a1ed3219d623ccb8483714efb",
     "trx_id":"TRX9364426874202208031",
     "member_code":"MEM3532234432X34"
 

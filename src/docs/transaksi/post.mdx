@@ -23,7 +23,7 @@ Berikut ini parameter / payload yang di harapkan :
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
 | produk      | Kode produk di Toko Voucher                                                                                                             | String    | Ya    |
-| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                     | String    | Ya    |
+| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id                                                                                                        | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | Signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
@@ -100,6 +100,10 @@ Berikut ini parameter / payload yang di harapkan :
     "error_msg":"Signature Invalid"
 }
 ```
+
+> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
+> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.id/webhook/post)
+
 
 
 

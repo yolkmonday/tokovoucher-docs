@@ -23,7 +23,7 @@ Berikut ini parameter / payload yang di harapkan :
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda atau dari Software yang anda gunakan                                                                                                      | String    | Ya    |
 | produk      | Kode produk di Toko Voucher                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                      | String    | Tidak    |
+| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id                                                                                                       | String    | Tidak    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | secret   | Secret Key Anda Note: Secret bisa dilihat pada member area | String    | Ya    |
@@ -43,3 +43,6 @@ TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:101
 TRXID:T220907KLNU024756. REFID:1541623. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
+
+> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
+> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.id/webhook/get)

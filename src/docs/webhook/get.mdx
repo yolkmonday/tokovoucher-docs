@@ -1,11 +1,26 @@
 ---
-title: 'Webhook GET'
+title: 'Report Transaksi'
 description: Melakukan pengecekan status transaksi
 ---
 
-Digiflazz akan mengirimkan balasan dengan Protokol `HTTP GET`
-
 > Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
+
+Tokovoucher akan mengirimkan balasan SUKSES / GAGAL ke url Anda dengan format sebagai berikut:
+
+### Deskripsi
+| Parameter   | Deskripsi                                                                                                              |
+|-------------|------------------------------------------------------------------------------------------------------------------------|
+| serverid      | Id transaksi / ref id Toko Voucher                                                                                                   | 
+| clientid      |Id transaksi / ref id client                                                                                                       | 
+| statuscode      | Status transaksi server 1=sukses 2=gagal                                     | 
+| kp   | Kode produk client                                                            | 
+| msisdn | Nomor tujuan transaksi                                                                                                     | 
+| sn   | Nomor seri transaksi / SN operator| 
+| msg   | Keterangan / pesan transaksi| 
+
+
+
+
 
 ### Sampel Report Sukses
 

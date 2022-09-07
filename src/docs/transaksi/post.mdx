@@ -12,21 +12,20 @@ Melakukan pembelian produk menggunakan Metode POST
 </div>
 
 ```
-https://api.tokovoucher.id/v2/transaksi
+https://api.tokovoucher.id/v1/transaksi
 ```
 
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
 
-
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| produk      | Kode produk                                                                                                            | String    | Ya    |
+| produk      | Kode produk di Toko Voucher                                                                                                             | String    | Ya    |
 | tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                     | String    | Ya    |
-| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
+| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| Secret   | Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Formula signature md5(member_code+secret) Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ```json title=Contoh
 {

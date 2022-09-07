@@ -25,7 +25,7 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| secret   | Note: Secret bisa dilihat pada member area | String    | Ya    |
+| signature   | Formula signature md5(member_code+secret) Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ```json title=Contoh
 {

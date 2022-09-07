@@ -8,17 +8,32 @@ Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan tra
 > Kami akan mengirimkan report ke webhook anda setiap ada perubahan status transaksi
 
 ### Header
-Header yang kami kirimkan dengan Formula `md5(MEMBER_CODE:SECRET:REF_ID)` :
+Header yang kami kirimkan dengan Key `X-TokoVoucher-Authorization` dan value dengan Formula `md5(MEMBER_CODE:SECRET:REF_ID)` :
 
-```json
-"Authorization": "bd134207f74532a8b094676c4a2ca9ed" //md5(MEMBER_CODE:SECRET:REF_ID)
+```
+"X-TokoVoucher-Authorization": "bd134207f74532a8b094676c4a2ca9ed" //md5(MEMBER_CODE:SECRET:REF_ID)
 ```
 
-### Sampel Webhook
+### Sampel Webhook Sukses
 
 ```json
 {
   "status": "sukses",
+  "message": "asd",
+  "sn": "ads",
+  "ref_id": "tes12",
+  "trx_id": "123jad",
+  "produk": "FF5",
+  "sisa_saldo": 1000000,
+  "price": 10000
+}
+```
+
+### Sampel Webhook Gagal
+
+```json
+{
+  "status": "gagal",
   "message": "asd",
   "sn": "ads",
   "ref_id": "tes12",

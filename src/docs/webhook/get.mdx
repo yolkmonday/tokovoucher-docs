@@ -7,8 +7,14 @@ Digiflazz akan mengirimkan balasan dengan Protokol `HTTP GET`
 
 > Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
 
-### Sampel Webhook
+### Sampel Report Sukses
 
 ```
+https://url-mitra.com/report?serverid=T220907KLNU024755&clientid=1541622&statuscode=1&kp=SP10&msisdn=081311223344&sn=02806600001851150526&msg=TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:10145. SALDO:126700. KP:SP10.081311223344 TGL:2022-06-21
+```
 
+### Sampel Report Gagal
+
+```
+https://url-mitra.com/report?serverid=T220907KLNU024756&clientid=1541623&statuscode=2&kp=SP10&msisdn=081311223344&sn=&msg=TRXID:T220907KLNU024755. REFID:1541622. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```

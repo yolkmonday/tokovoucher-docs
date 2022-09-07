@@ -3,11 +3,19 @@
 - label: "Pesiapan Awal"
   link: "/"
 
-- label: Price List
-  link: "/pricelist"
-
 - label: Cek Saldo
   link: "/cek-saldo"
+
+- label: Produk
+  items:
+    - label: "Kategori Produk"
+      link: "/produk/kategori"
+    - label: "Operator Produk"
+      link: "/produk/operator"
+    - label: "Jenis Produk"
+      link: "/produk/jenis"
+    - label: "Produk List"
+      link: "/produk/list"
 
 - label: Transaksi
   items:

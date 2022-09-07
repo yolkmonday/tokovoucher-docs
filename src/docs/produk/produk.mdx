@@ -1,0 +1,32 @@
+---
+title: 'List  Produk'
+description: Menampilkan  produk yang tersedia
+---
+
+
+Menampilkan produk yang tersedia
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom:12px;">
+<span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
+</div>
+
+```
+member/produk/list/:member_code/[signature]/[id_operator]/[id_jenis]
+```
+
+### Deskripsi
+Berikut ini parameter / payload yang di harapkan :
+
+
+| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
+|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
+| member_code | Member code anda                                                                                                       | String    | Ya    |
+| id_operator | ID Operator  yang dipilih                                                                                                      | String    | Ya    |
+| id_jenis | ID Jenis yang dipilih                                                                                                    | String    | Ya    |
+
+| signature   |  Note: Secret bisa dilihat pada member area | String    | Ya    |
+
+### Sampel Response Gagal
+
+### Sampel Response Sukses

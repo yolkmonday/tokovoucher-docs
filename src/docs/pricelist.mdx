@@ -9,7 +9,7 @@ Menampilkan daftar harga
 ### Endpoint
 <div style="font-family:monospace;">
 <span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
-<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://v1.tokovoucher.net/member/produk/list/[member_code]/[signature]</span>
+<span style="margin-left:4px;color:#e74c3c;background:#fed1cc;border-radius: 4px;padding: 4px;">https://api.tokovoucher.id/member/produk/list/[member_code]/[secret]</span>
 
 </div>
 
@@ -19,7 +19,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature dengan formula **md5(member_code:secret)**   Note: Secret bisa dilihat pada member area | String    | Ya    |
+| secret   |  Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 ### Sampel Response Gagal
 

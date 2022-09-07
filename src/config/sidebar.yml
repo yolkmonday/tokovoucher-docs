@@ -1,32 +1,31 @@
 # Sidebar navigation
 
-- label: 'Pesiapan Awal'
-  link: '/'
+- label: "Pesiapan Awal"
+  link: "/"
 
 - label: Price List
-  link: '/pricelist'
+  link: "/pricelist"
 
 - label: Cek Saldo
-  link: '/cek-saldo'
+  link: "/cek-saldo"
 
 - label: Transaksi
   items:
-    - label: 'Metode POST'
-      link: '/transaksi/post'
-    - label: 'Metode GET'
-      link: '/transaksi/get'
-    - label: 'Metode GET HTTP Text (Otomax, IRS, Dll)'
-      link: '/transaksi/get-text'
+    - label: "Metode POST"
+      link: "/transaksi/post"
+    - label: "Metode GET"
+      link: "/transaksi/get"
+    - label: "Metode GET HTTP Text"
+      link: "/transaksi/get-text"
 
 - label: Status Transaksi
   items:
-    - label: 'Metode POST'
-      link: '/cek-status/post'
-    - label: 'Metode GET'
-      link: '/cek-status/get'
-
+    - label: "Metode POST"
+      link: "/cek-status/post"
+    - label: "Metode GET"
+      link: "/cek-status/get"
 
 - label: Lainnya
   items:
     - label: Simulasi API
-      link: 'https://documenter.getpostman.com/view/22544220/VUjPGPwm'
+      link: "https://documenter.getpostman.com/view/22544220/VUjPGPwm"

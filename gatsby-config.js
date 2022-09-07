@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `Toko Voucher`,
-    defaultTitle: `Toko Voucher`,
-    siteTitleShort: `Toko Voucher`,
-    siteDescription: `Out of the box Gatsby Theme for creating documentation websites easily and quickly`,
-    siteUrl: `https://tokovoucher.netlify.app`,
-    siteAuthor: `@jpedroschmitz`,
+    siteTitle: `Dokumentasi API Toko Voucher`,
+    defaultTitle: `Dokumentasi API Toko Voucher`,
+    siteTitleShort: `Dokumentasi API Toko Voucher`,
+    siteDescription: `Dokumentasi API Toko Voucher`,
+    siteUrl: `https://docs.tokovoucher.id`,
+    siteAuthor: `@tokovoucher`,
     siteImage: `/banner.png`,
     siteLanguage: `id`,
     themeColor: `#D1B374`,
@@ -24,8 +24,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Toko Voucher`,
-        short_name: `Toko Voucher`,
+        name: `Dokumentasi API Toko Voucher`,
+        short_name: `Dokumentasi API Toko Voucher`,
         start_url: `/`,
         background_color: `#ffffff`,
         display: `standalone`,
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://tokovoucher.netlify.app`,
+        siteUrl: `https://docs.tokovoucher.id`,
       },
     },
     `gatsby-plugin-offline`,

@@ -12,7 +12,7 @@ Melakukan pengecekan status transaksi
 </div>
 
 ```
-https://api.tokovoucher.id/v1/transaksi/status?trx_id=[trx_id]&member_code=[member_code]&signature=[signature]
+https://api.tokovoucher.id/v1/transaksi/status?ref_id=[ref_id]&member_code=[member_code]&signature=[signature]
 ```
 
 ### Deskripsi
@@ -21,13 +21,72 @@ Berikut ini parameter / payload yang di harapkan :
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| trx_id      | Trx ID anda                                                                                                       | String    | Ya    |
+| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| Signature   | Formula signature `md5(TRX_ID:MEMBER_CODE:SECRET)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Formula signature  `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
 
+
+
+### Sampel Response Pending
+```json
+{
+    "status":"pending",
+    "message":"TRXID:T220907UYXI026607. REFID:5467110. PENDING. HRG:1600. SALDO:17322134. KP:S1.085211223344 TGL:2022-09-07 22:46:36",
+    "sn":"",
+    "ref_id":"5467110",
+    "trx_id":"T220907UYXI026607",
+    "produk":"s1",
+    "sisa_saldo":17322134,
+    "price":1600
+}
+```
 
 ### Sampel Response Sukses
+```json
+{
+    "status":"sukses",
+    "message":"TRXID:T220907HTRK027479. REFID:6915241. SUKSES, SN: DLINR-_-. RefId : 11183039941543874221. HRG:789. SALDO:17317805. KP:FF5.50714103 TGL:2022-09-07 22:59:47",
+    "sn":"DLINR-_-. RefId : 11183039941543874221",
+    "ref_id":"6915241",
+    "trx_id":"T220907HTRK027479",
+    "produk":"ff5",
+    "sisa_saldo":17317805,
+    "price":789
+}
+```
 
 ### Sampel Response Gagal
+
+```json
+{
+    "status":"gagal",
+    "message":"TRXID:T220907JKYI026608. REFID:5467112. GAGAL, Nomor Tujuan Salah. HRG:1600. SALDO:172200. KP:S1.085222334455 TGL:2022-09-07 22:46:36",
+    "sn":"Nomor Tujuan Salah",
+    "ref_id":"5467112",
+    "trx_id":"T220907JKYI026608",
+    "produk":"S1",
+    "sisa_saldo":172200,
+    "price":1600
+}
+
+```
+
+### Sampel Response Gagal IP Not Allowed
+
+```json
+{
+    "status":0,
+    "error_msg":"Ip Not Allow"
+}
+```
+
+### Sampel Response Gagal Signature Invalid
+
+```json
+{
+    "status":0,
+    "error_msg":"Signature Invalid"
+}
+```
 
 

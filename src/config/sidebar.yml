@@ -15,14 +15,14 @@
       link: "/transaksi/post"
     - label: "Metode GET"
       link: "/transaksi/get"
-    - label: "Via IP"
+    - label: "Via IP (Otomax, IRS, Dll)"
       link: "/transaksi/get-text"
 
 - label: Report / Webhook
   items:
     - label: "via POST / GET"
       link: "/webhook/post"
-    - label: "Via IP"
+    - label: "Via IP (Otomax, IRS, Dll)"
       link: "/webhook/get"
 
 - label: Status Transaksi

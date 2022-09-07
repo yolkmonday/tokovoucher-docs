@@ -1,0 +1,23 @@
+---
+title: 'Webhook POST'
+description: Melakukan pengecekan status transaksi
+---
+
+Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan transaksi melalui metode POST
+
+> Kami akan mengirimkan report ke webhook anda setiap ada perubahan status transaksi
+
+### Sampel Webhook
+
+```json
+{
+  "status": "sukses",
+  "message": "asd",
+  "sn": "ads",
+  "ref_id": "tes12",
+  "trx_id": "123jad",
+  "produk": "FF5",
+  "sisa_saldo": 1000000,
+  "price": 10000
+}
+```

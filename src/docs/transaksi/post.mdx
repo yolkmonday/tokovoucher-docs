@@ -17,6 +17,7 @@ https://api.tokovoucher.id/v1/transaksi
 
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
+> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
@@ -25,7 +26,8 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                     | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| Signature   | Formula signature md5(member_code+secret) Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Formula signature md5(MEMBER_CODE:SECRET:REF_ID) Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+
 
 ```json title=Contoh
 {
@@ -37,7 +39,9 @@ Berikut ini parameter / payload yang di harapkan :
     "secret":"f109a98c4f298ade23fb6c1f067dce53"
 }
 ```
-
+### Sampel Response Pending
+### Sampel Response Sukses
 ### Sampel Response Gagal
 
-### Sampel Response Sukses
+
+

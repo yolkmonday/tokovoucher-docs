@@ -1,5 +1,5 @@
 ---
-title: 'Transaksi dengan Metode GET  (Otomax, IRS, Dll)'
+title: 'Transaksi via IP'
 description: Melakukan pembelian produk menggunakan Metode GET dan response text
 ---
 
@@ -12,22 +12,24 @@ Melakukan pembelian produk menggunakan Metode GET dan response text untuk softwa
 </div>
 
 ```
-https://api.tokovoucher.id/v1/transaksi?ref_id=[ref_id]&produk=[kode_produk]&tujuan=[tujuan]&signature=[signature]&member_code=[member_code]&server_id=[server_id]
+http://trx-ip.tokovoucher.idv1/transaksi?ref_id=[ref_id]&produk=[kode_produk]&tujuan=[tujuan]&signature=[signature]&member_code=[member_code]&server_id=[server_id]
 ```
 
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
+> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda atau dari Software yang anda gunakan                                                                                                      | String    | Ya    |
 | produk      | Kode produk di Toko Voucher                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                      | String    | Ya    |
+| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                      | String    | Tidak    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | secret   | Secret Key Anda Note: Secret bisa dilihat pada member area | String    | Ya    |
 
 
+### Sampel Response Pending
+### Sampel Response Sukses
 ### Sampel Response Gagal
 
-### Sampel Response Sukses

@@ -17,22 +17,17 @@ https://api.tokovoucher.id/v1/transaksi/status
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
 
-
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| produk      | Kode produk                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian                                                                                                       | String    | Ya    |
-| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Ya    |
+| trx_id      | Trx ID                                                                                                       | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Formula signature md5(member_code+secret) Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Formula signature md5(TRX_ID:MEMBER_CODE:SECRET) Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
 
 ```json title=Contoh
 {
-    "secret":"a8f4ea2a1ed3219d623ccb8483714efb",
     "trx_id":"TRX9364426874202208031",
     "member_code":"MEM3532234432X34"
-
+    "signature":"a8f4ea2a1ed3219d623ccb8483714efb",
 }
 ```
 

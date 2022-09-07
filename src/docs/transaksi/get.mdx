@@ -18,6 +18,7 @@ https://api.tokovoucher.id/v1/transaksi?ref_id=[ref_id]&produk=[produk]&tujuan=[
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
 
+> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
@@ -26,9 +27,25 @@ Berikut ini parameter / payload yang di harapkan :
 | tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID                                                                                                    | String    | Ya    |
 | server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| secret   | Secret Key anda   Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Formula signature md5(MEMBER_CODE:SECRET:REF_ID) Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
 
 
+### Sampel Response Pending
+
+```json
+{
+    "status": "pending",
+    "message": "#TRXID: T220831WEAP000009, #REFID: ref342212x42effdde3334, Status: PENDING, Price: 2500,  Sisa saldo: 166500, CODE: FDT32.0343442342343, SN: , TGL: 2022-08-31 16:53:48",
+    "sn": "",
+    "ref_id": "ref342212x42effdde3334",
+    "trx_id": "T220831WEAP000009",
+    "produk": "FDT32",
+    "sisa_saldo": 166500,
+    "price": 2500,
+    "is_refund": false
+}
+
+```
+### Sampel Response Sukses
 ### Sampel Response Gagal
 
-### Sampel Response Sukses

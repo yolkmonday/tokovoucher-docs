@@ -6,16 +6,8 @@
 - label: Cek Saldo
   link: "/cek-saldo"
 
-- label: Produk
-  items:
-    - label: "Kategori Produk"
-      link: "/produk/kategori"
-    - label: "Operator Produk"
-      link: "/produk/operator"
-    - label: "Jenis Produk"
-      link: "/produk/jenis"
-    - label: "Produk List"
-      link: "/produk/list"
+- label: List Produk
+  link: "/produk"
 
 - label: Transaksi
   items:
@@ -23,7 +15,7 @@
       link: "/transaksi/post"
     - label: "Metode GET"
       link: "/transaksi/get"
-    - label: "Metode GET HTTP Text"
+    - label: "Via IP"
       link: "/transaksi/get-text"
 
 - label: Status Transaksi
@@ -32,6 +24,13 @@
       link: "/cek-status/post"
     - label: "Metode GET"
       link: "/cek-status/get"
+
+- label: Report / Webhook
+  items:
+    - label: "via POST / GET"
+      link: "/webhook/post"
+    - label: "Via IP"
+      link: "/webhook/get"
 
 - label: Lainnya
   items:

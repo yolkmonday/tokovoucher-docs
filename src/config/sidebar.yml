@@ -31,8 +31,7 @@
       link: "/cek-status/post"
     - label: "Metode GET"
       link: "/cek-status/get"
-
-- label: Lainnya
-  items:
-    - label: Simulasi API
-      link: "https://documenter.getpostman.com/view/22544220/VUjPGPwm"
+# - label: Lainnya
+#   items:
+#     - label: Simulasi API
+#       link: "https://documenter.getpostman.com/view/22544220/VUjPGPwm"

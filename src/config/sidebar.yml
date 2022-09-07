@@ -18,19 +18,19 @@
     - label: "Via IP"
       link: "/transaksi/get-text"
 
-- label: Status Transaksi
-  items:
-    - label: "Metode POST"
-      link: "/cek-status/post"
-    - label: "Metode GET"
-      link: "/cek-status/get"
-
 - label: Report / Webhook
   items:
     - label: "via POST / GET"
       link: "/webhook/post"
     - label: "Via IP"
       link: "/webhook/get"
+
+- label: Status Transaksi
+  items:
+    - label: "Metode POST"
+      link: "/cek-status/post"
+    - label: "Metode GET"
+      link: "/cek-status/get"
 
 - label: Lainnya
   items:

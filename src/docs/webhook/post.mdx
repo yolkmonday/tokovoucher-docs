@@ -1,11 +1,18 @@
 ---
-title: 'Webhook POST'
+title: 'Webhook POST / GET'
 description: Melakukan pengecekan status transaksi
 ---
 
-Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan transaksi melalui metode POST
+Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan transaksi melalui metode POST / GET
 
 > Kami akan mengirimkan report ke webhook anda setiap ada perubahan status transaksi
+
+### Header
+Header yang kami kirimkan dengan Formula `md5(MEMBER_CODE:SECRET:REF_ID)` :
+
+```json
+"Authorization": "bd134207f74532a8b094676c4a2ca9ed" //md5(MEMBER_CODE:SECRET:REF_ID)
+```
 
 ### Sampel Webhook
 

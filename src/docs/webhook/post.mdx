@@ -6,6 +6,7 @@ description: Melakukan pengecekan status transaksi
 Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan transaksi melalui metode POST / GET
 
 > Kami akan mengirimkan report ke webhook anda setiap ada perubahan status transaksi
+> Pastikan untuk Whitelist IP Kami : 209.182.237.226
 
 ### Header
 Header yang kami kirimkan dengan Key `X-TokoVoucher-Authorization` dan value dengan Formula `md5(MEMBER_CODE:SECRET:REF_ID)` :

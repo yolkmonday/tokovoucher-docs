@@ -12,7 +12,7 @@ Melakukan pengecekan saldo member
 </div>
 
 ```
-https://api.tokovoucher.id/member/[member_code]/[signature]
+https://api.tokovoucher.id/member?member_code=[your_member_code]&signature=your_signature_default
 ```
 
 ### Deskripsi
@@ -22,7 +22,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | member_code | Member code anda                                                                                                       | String    | Ya    |
-| Signature   | Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Signature   | Signature Default Anda, bisa dilihat pada member area | String    | Ya    |
 
 ### Sampel Response Gagal
 
@@ -34,7 +34,9 @@ Berikut ini parameter / payload yang di harapkan :
     "rc": 200,
     "message": "Detail member",
     "data": {
-        "saldo": 1000
+        "saldo": 1000,
+        "nama": "Tokovoucher Dev",
+        "member_code":"MEMBER20220801UAXH95"
     },
     "ts": 1660204457
 }

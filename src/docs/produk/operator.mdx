@@ -13,7 +13,7 @@ Menampilkan Operator produk yang tersedia
 
 ```
 
-https://api.tokovoucher.id/member/produk/operator/list?member_code=[member_code]&signature=[signature]
+https://api.tokovoucher.id/member/produk/operator/list?member_code=[MEMBER_CODE]&signature=[SIGNATURE]&id=[id_category_produk]
 ```
 
 ### Deskripsi
@@ -23,6 +23,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | member_code | Member code anda                                                                                                       | String    | Ya    |
+| id_category_produk | ID Kategori Produk                                                                                                      | String    | Ya    |
 | signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
 
 ### Sampel Response Gagal

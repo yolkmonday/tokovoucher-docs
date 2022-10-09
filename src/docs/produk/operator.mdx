@@ -26,6 +26,42 @@ Berikut ini parameter / payload yang di harapkan :
 | id_category_produk | ID Kategori Produk                                                                                                      | String    | Ya    |
 | signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
 
-### Sampel Response Gagal
+### Sampel Response Gagal IP Not Allowed
 
+```json
+{
+    "status":0,
+    "error_msg":"Ip Not Allow"
+}
+```
+
+### Sampel Response Gagal Signature Invalid
+
+```json
+{
+    "status":0,
+    "error_msg":"Signature Invalid"
+}
+```
 ### Sampel Response Sukses
+
+```json
+{
+    "status": 1,
+    "rc": 200,
+    "message": "Data Found",
+    "data": [
+        {
+            "id": 1,
+            "nama_category": "Voucher Game",
+            "nama": "Free Fire",
+            "min_karakter": 10,
+            "max_karakter": 15,
+            "logo": "-",
+            "status": 1
+        }
+    ],
+    "ts": 1661497796
+}
+
+```

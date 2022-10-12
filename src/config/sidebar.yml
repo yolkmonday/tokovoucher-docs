@@ -17,6 +17,8 @@
       link: "/transaksi/get"
     - label: "Via IP (Otomax, IRS, Dll)"
       link: "/transaksi/get-text"
+    - label: "Via W38s"
+      link: "/transaksi/w38s"
 
 - label: Report / Webhook
   items:

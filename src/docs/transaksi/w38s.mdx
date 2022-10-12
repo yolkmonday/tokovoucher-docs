@@ -1,0 +1,47 @@
+---
+title: 'Transaksi via W38S'
+description: Melakukan pembelian produk menggunakan Metode GET dan response text
+---
+
+
+Melakukan pembelian produk menggunakan Metode GET dan response text untuk software W38S
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom:12px;">
+<span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
+</div>
+
+```
+http://trx-ip.tokovoucher.id/w38s?memberID=[member_code]&password=[signature]&product=[product]&ref_id=[ref_id]&dest=[dest]
+```
+
+### Deskripsi
+Berikut ini parameter  yang di harapkan :
+> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
+
+| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
+|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
+| ref_id      | Ref ID unik anda atau dari Software yang anda gunakan                                                                                                      | String    | Ya    |
+| product      | Kode produk di Toko Voucher                                                                                                            | String    | Ya    |
+| dest      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id  | String    | Ya    |
+| memberID   | Member code anda                                                                                                       | String    | Ya    |
+| signature   | Signature Default Anda Note: Signature bisa dilihat pada member area [Pengaturan Secret Key ](https://member.tokovoucher.id/pengaturan/secret-key) | String    | Ya    |
+
+
+### Sampel Response Pending
+```
+TRXID:T220907KLNU024757. REFID:1541624. PENDING. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
+```
+
+### Sampel Response Sukses
+```
+TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:10145. SALDO:126700. KP:SP10.081311223344 TGL:2022-06-21
+```
+### Sampel Response Gagal
+```
+TRXID:T220907KLNU024756. REFID:1541623. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
+```
+
+
+> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
+> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.id/webhook/get)

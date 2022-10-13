@@ -11,3 +11,81 @@ Menampilkan List Kategori, Operator, Jenis dan Produk
 - [Lihat List Jenis Produk ](https://docs.tokovoucher.id/produk/jenis)
 - [Lihat List Produk ](https://docs.tokovoucher.id/produk/list)
 
+## Pencarian Produk
+
+Pencarian produk bisa menggunakan Kode Produk Spesifik atau juga prefix nya.
+> Misalnya: <br/>
+> FF untuk prefix Free Fire akan menampilkan Produk dengan awal FF <br/>
+> FF5 akan menampilkan produk spesifik
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom:12px;">
+<span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
+</div>
+
+```
+https://api.tokovoucher.id/produk/code?member_code=[member_code]&signature=[signature]&kode=[kode]
+```
+
+### Deskripsi
+Berikut ini parameter / payload yang di harapkan :
+
+
+| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
+|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
+| member_code | Member code anda                                                                                                       | String    | Ya    |
+| kode | Bisa menggunakan prefix atau kode produk spesifik                                                                                                    | String    | Ya    |
+| signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
+
+### Sampel Response Gagal IP Not Allowed
+
+```json
+{
+    "status":0,
+    "error_msg":"Ip Not Allow"
+}
+```
+
+### Sampel Response Gagal Signature Invalid
+
+```json
+{
+    "status":0,
+    "error_msg":"Signature Invalid"
+}
+```
+
+### Sampel Response Sukses
+```json
+
+{
+    "status": 1,
+    "rc": 200,
+    "message": "Data Found",
+    "data": [
+        {
+            "id": 2,
+            "code": "FDT32",
+            "category_name": "Voucher Game",
+            "operator_produk": "Free Fire",
+            "jenis_name": "jenis b",
+            "nama_produk": "Free Fire",
+            "deskripsi": "free fires",
+            "price": 2500,
+            "status": 1
+        },
+        {
+            "id": 3,
+            "code": "FDTE40",
+            "category_name": "Voucher Game",
+            "operator_produk": "Free Fire",
+            "jenis_name": "jenis b",
+            "nama_produk": "Free Fire",
+            "deskripsi": "free fires",
+            "price": 2500,
+            "status": 1
+        }
+    ],
+    "ts": 1665631083
+}
+```

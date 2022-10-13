@@ -7,12 +7,9 @@ description: Melakukan pembelian produk menggunakan Metode GET dan response text
 Melakukan pembelian produk menggunakan Metode GET dan response text untuk software W38S
 
 ### Endpoint
-<div style="font-family:monospace;margin-bottom:12px;">
-<span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
-</div>
 
 ```
-http://trx-ip.tokovoucher.id/w38s?memberID=[member_code]&password=[signature]&product=[product]&ref_id=[ref_id]&dest=[dest]
+http://trx-ip.tokovoucher.id/w38s
 ```
 
 ### Panduan
@@ -21,14 +18,14 @@ http://trx-ip.tokovoucher.id/w38s?memberID=[member_code]&password=[signature]&pr
 
 ### Deskripsi
 Berikut ini parameter  yang di harapkan :
-> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
+> Untuk tujuan bisa menggabungkan tujuan + server_id
 
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda atau dari Software yang anda gunakan                                                                                                      | String    | Ya    |
 | product      | Kode produk di Toko Voucher                                                                                                            | String    | Ya    |
 | dest      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id  | String    | Ya    |
-| memberID   | Member code anda                                                                                                       | String    | Ya    |
+| Member Code   | Member code anda bisa dilihat pada member area [Pengaturan Secret Key ](https://member.tokovoucher.id/pengaturan/secret-key)                                                                                                       | String    | Ya    |
 | signature   | Signature Default Anda Note: Signature bisa dilihat pada member area [Pengaturan Secret Key ](https://member.tokovoucher.id/pengaturan/secret-key) | String    | Ya    |
 
 

@@ -6,6 +6,7 @@ description: Melakukan ewallet reload
 
 Untuk melakukan Ewallet Reload
 
+
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
 <span style="color:white;background:#27ae60;border-radius: 4px;padding: 4px;">POST</span>
@@ -15,6 +16,7 @@ Untuk melakukan Ewallet Reload
 https://api.tokovoucher.id/v1/transfer/ewallet
 ```
 
+> Untuk kode ewallet bisa di cek di [Lihat Kode eWallet](https://member.tokovoucher.id/list-kode)    
 
 ### Deskripsi
 Berikut ini parameter / payload yang di harapkan :
@@ -22,7 +24,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| ewallet      | Kode Ewallet di Toko Voucher (Lihat Kode Bank)                                                                                                           | String    | Ya    |
+| ewallet      | Kode Ewallet di Toko Voucher [Lihat Kode eWallet](https://member.tokovoucher.id/list-kode)                                                                                                           | String    | Ya    |
 | tujuan      | Nomor Ewallet Tujuan                                                                                                      | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |

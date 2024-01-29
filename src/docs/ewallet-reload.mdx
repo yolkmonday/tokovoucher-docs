@@ -1,0 +1,40 @@
+---
+title: 'Ewallet Reload'
+description: Melakukan ewallet reload
+---
+
+
+Untuk melakukan Ewallet Reload
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom: 12px;">
+<span style="color:white;background:#27ae60;border-radius: 4px;padding: 4px;">POST</span>
+</div>
+
+```
+https://api.tokovoucher.id/v1/transfer/ewallet
+```
+
+
+### Deskripsi
+Berikut ini parameter / payload yang di harapkan :
+
+| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
+|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
+| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
+| ewallet      | Kode Ewallet di Toko Voucher (Lihat Kode Bank)                                                                                                           | String    | Ya    |
+| tujuan      | Nomor Ewallet Tujuan                                                                                                      | String    | Ya    |
+| member_code | Member code anda                                                                                                       | String    | Ya    |
+| signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+
+
+```json title=Contoh
+{
+    "member_code":"M2305TEXTXX353GC",
+    "ref_id":"TESTFD21",
+    "ewallet":"OVO",
+    "tujuan":"90000000000",
+    "signature":"9c0c50f16xxxxfb5dd106f718e3b83dd9",
+    "nominal":12000
+}
+```

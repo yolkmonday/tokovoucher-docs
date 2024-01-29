@@ -20,6 +20,14 @@
     - label: "Via W38s"
       link: "/transaksi/w38s"
 
+
+- label: "Transfer Bank"
+  link: "/bank-transfer"
+
+- label: "Ewallet Reload"
+  link: "/ewallet-reload"
+
+
 - label: Report / Webhook
   items:
     - label: "via POST / GET"

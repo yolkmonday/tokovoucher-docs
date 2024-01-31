@@ -25,7 +25,7 @@ Berikut ini parameter / payload yang di harapkan :
 | Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
 |-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
 | ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| bank      | Kode Bank di Toko Voucher (Lihat Kode Bank)                                                                                                           | String    | Ya    |
+| bank      | Kode Bank di Toko Voucher (Bisa menggunakan Bank Code ataupun Bank ID) .Lihat Kode Bank](https://member.tokovoucher.id/list-bank)                                                                                                          | String    | Ya    |
 | tujuan      | Nomor Rekening Penerima                                                                                                      | String    | Ya    |
 | member_code | Member code anda                                                                                                       | String    | Ya    |
 | signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |

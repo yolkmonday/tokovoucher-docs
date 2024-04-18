@@ -1,0 +1,113 @@
+---
+title: 'Deposit'
+description: Melakukan request deposit saldo
+---
+
+
+Untuk menerbitkan tiket deposit 
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom: 12px;">
+<span style="color:white;background:#e74c3c;border-radius: 4px;padding: 4px;">GET</span>
+</div>
+
+```
+https://api.tokovoucher.id/v1/deposit?member_code=[YOUR_MEMBER_CODE]&secret=[YOUR_SECRET_KEY]&nominal=[NOMINAL]&kode=[KODE_BAYAR]
+```
+
+### Deskripsi
+Berikut ini parameter / payload yang di harapkan :
+
+
+| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
+|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
+| member_code | Member code anda                                                                                                       | String    | Ya    |
+| secret   | Secret Key, bisa dilihat pada member area  [Lihat Disini](https://member.tokovoucher.id/pengaturan/secret-key)| String    | Ya    |
+| nominal | Nominal Deposit yang di inginkan | Int | Ya |
+| kode | Kode dari Metode Pembayaran yang di gunakan [Lihat Disini](https://member.tokovoucher.id/metode-deposit) | String | Ya|
+
+## Sampel Response Sukses
+
+### Metode QRIS
+
+```json
+{
+    "status": 1,
+    "rc": 200,
+    "message": "Success Create Topup",
+    "data": {
+        "status": "SUKSES",
+        "metode": "QRIS All Payment",
+        "pay": "https://assets.tokopay.id/2024/04/TP240418WBNQ010530.png",
+        "pay_name": "",
+        "nominal": 10000,
+        "total_transfer": 10000,
+        "kode_unik": 0,
+        "biaya_admin": 0,
+        "created": "2024-04-18",
+        "expired_at": "2024-04-19 00:00:00"
+    },
+    "ts": 1713410814
+}
+```
+
+### Metode Bank Transfer
+
+```json
+{
+    "status": 1,
+    "rc": 200,
+    "message": "Success Create Topup",
+    "data": {
+        "status": "SUKSES",
+        "metode": "Bank Bri",
+        "pay": "8993812310",
+        "pay_name": "M ANANG RAMADHAN",
+        "nominal": 10000,
+        "total_transfer": 10034,
+        "kode_unik": 34,
+        "biaya_admin": 0,
+        "created": "2024-04-18",
+        "expired_at": "2024-04-19 00:00:00"
+    },
+    "ts": 1713409535
+}
+
+```
+
+### Metode Virtual Akun
+
+```json
+{
+    "status": 1,
+    "rc": 200,
+    "message": "Success Create Topup",
+    "data": {
+        "status": "SUKSES",
+        "metode": "BNI Virtual Account",
+        "pay": "8189354257698184",
+        "pay_name": "",
+        "nominal": 10000,
+        "total_transfer": 10000,
+        "kode_unik": 0,
+        "biaya_admin": 0,
+        "created": "2024-04-18",
+        "expired_at": "2024-04-19 00:00:00"
+    },
+    "ts": 1713409777
+}
+
+```
+
+## Sampel Response Gagal
+
+```json
+{
+    "status": 0,
+    "rc": 500,
+    "error_msg": "Member tidak ditemukan !!"
+}
+```
+
+
+

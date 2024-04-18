@@ -9,6 +9,9 @@
 - label: List Produk
   link: "/produk"
 
+- label: Deposit
+  link: "/deposit"
+
 - label: Transaksi
   items:
     - label: "Metode POST"

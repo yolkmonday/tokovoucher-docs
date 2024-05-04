@@ -1,0 +1,48 @@
+---
+title: 'Chatbot Telegram'
+description: Melakukan pengecekan status transaksi
+---
+
+
+## Tautkan akun ke chatbot
+
+Cara menautkan akun member tokovoucher dengan akun chatbot
+<ol>
+  <li>Buat grub telegram baru khusus untuk tokovoucher bot,</li>
+  <li>Tambahkan bot <strong>@tokovoucherbot</strong> ke dalam grup, dan jadikan bot sebagai admin</li>
+  <li>Kemudian ketikkan <strong>/start</strong> di grub. Grub id akan muncul, Copy ID tersebut ke Form Pengaturan Chatbot Telegram <a target="_blank" href="https://member.tokovoucher.id/pengaturan/chatbot">Klik Disini</a></li>
+</ol>
+
+## Cek Informasi Akun
+
+Format pesan untuk melakukan pengecekan akun
+
+```
+info
+```
+
+## Request Tiket Deposit
+
+Format pesan untuk melakukan request tiket deposit.
+
+> Untuk Kode Bank bisa di lihat di [Kode Bank](/kode-bank)
+
+### Cara 1
+```
+tiket.[KODE_BANK].[NOMINAL]
+```
+Contoh:<br/>
+Apabila ingin melakukan deposit ke BCA sebesar Rp.100.000, maka format pesannya adalah
+```
+tiket.bca.100000
+```
+
+### Cara 2
+```
+depo.[KODE_BANK].[NOMINAL]
+```
+Contoh:<br/>
+Apabila ingin melakukan deposit ke BCA sebesar Rp.100.000, maka format pesannya adalah
+```
+depo.bca.100000
+```

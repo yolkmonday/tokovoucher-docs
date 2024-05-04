@@ -12,6 +12,12 @@
 - label: Deposit
   link: "/deposit"
 
+- label: Chatbot
+  items:
+    - label: "Chatbot Telegram"
+      link: "/chatbot/telegram"
+
+
 - label: Transaksi
   items:
     - label: "Metode POST"

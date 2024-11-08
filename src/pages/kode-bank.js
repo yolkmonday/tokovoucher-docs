@@ -9,7 +9,7 @@ export default function KodeBank() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('https://api.tokovoucher.id/open-api/metode-topup');
+        const res = await fetch('https://api.tokovoucher.net/open-api/metode-topup');
         const data = await res.json();
         setKode(data.data);
       } catch (error) {

@@ -4,7 +4,7 @@ module.exports = {
     defaultTitle: `Dokumentasi API Toko Voucher`,
     siteTitleShort: `Dokumentasi API Toko Voucher`,
     siteDescription: `Dokumentasi API Toko Voucher`,
-    siteUrl: `https://docs.tokovoucher.id`,
+    siteUrl: `https://docs.tokovoucher.net`,
     siteAuthor: `@tokovoucher`,
     siteImage: `/banner.png`,
     siteLanguage: `id`,
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://docs.tokovoucher.id`,
+        siteUrl: `https://docs.tokovoucher.net`,
       },
     },
     `gatsby-plugin-offline`,

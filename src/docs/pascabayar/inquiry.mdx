@@ -1,0 +1,137 @@
+---
+title: 'Pascabayar - Inquiry'
+description: Mengecek tagihan pascabayar (PLN, PDAM, dll)
+---
+
+API ini digunakan untuk mengecek tagihan produk pascabayar seperti PLN Pascabayar, PDAM, Telkom, dan lainnya sebelum melakukan pembayaran.
+
+### Endpoint
+<div style="font-family:monospace;margin-bottom: 12px;">
+<span style="color:white;background:#27ae60;border-radius: 4px;padding: 4px;">POST</span>
+</div>
+
+```
+https://api.tokovoucher.id/v1/pascabayar-inq
+```
+
+### Parameter
+
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| ref_id      | ID referensi unik dari Anda (untuk tracking)                              | String    | Ya    |
+| produk      | Kode produk pascabayar (contoh: PLNPASCA)                                 | String    | Ya    |
+| tujuan      | Nomor pelanggan/ID Pel                                                    | String    | Ya    |
+| server_id   | Server ID (kosongkan jika tidak diperlukan)                               | String    | Tidak |
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature dengan formula `md5(REF_ID:MEMBER_CODE:SECRET_KEY)`             | String    | Ya    |
+
+> **Catatan:** Formula signature untuk pascabayar berbeda dengan transaksi biasa. Urutannya adalah `REF_ID:MEMBER_CODE:SECRET_KEY`.
+
+### Contoh Request
+
+```json
+{
+    "ref_id": "INQ20240115001",
+    "produk": "PLNPASCA",
+    "tujuan": "123456789012",
+    "server_id": "",
+    "member_code": "M001",
+    "signature": "abc123xyz"
+}
+```
+
+---
+
+## Response Sukses
+
+```json
+{
+    "status": "Sukses",
+    "ref_id": "INQ20240115001",
+    "trx_id": "TRX123456",
+    "customer_no": "123456789012",
+    "customer_name": "BUDI SANTOSO",
+    "produk": "PLNPASCA",
+    "message": "Inquiry berhasil",
+    "sisa_saldo": 1500000,
+    "price": 150000,
+    "admin": 2500,
+    "selling_price": 152500,
+    "desc": {},
+    "sn": "",
+    "due_date": "2024-01-20",
+    "jml_meter": "",
+    "tagihan": 147500,
+    "blnth": "012024",
+    "data": "900VA",
+    "denda": 0,
+    "jml_bulan": 1
+}
+```
+
+### Penjelasan Response
+
+| Field         | Tipe    | Deskripsi                                    |
+|---------------|---------|----------------------------------------------|
+| status        | String  | Status inquiry (`Sukses` atau `Gagal`)       |
+| ref_id        | String  | ID referensi dari Anda                       |
+| trx_id        | String  | ID transaksi dari sistem                     |
+| customer_no   | String  | Nomor pelanggan                              |
+| customer_name | String  | Nama pelanggan                               |
+| produk        | String  | Kode produk                                  |
+| message       | String  | Pesan hasil inquiry                          |
+| sisa_saldo    | Integer | Sisa saldo Anda                              |
+| price         | Integer | Harga total (tagihan + margin)               |
+| admin         | Integer | Biaya admin                                  |
+| selling_price | Integer | Harga jual ke pelanggan                      |
+| due_date      | String  | Tanggal jatuh tempo                          |
+| tagihan       | Integer | Tagihan dasar (tanpa admin)                  |
+| blnth         | String  | Periode tagihan (MMYYYY)                     |
+| data          | String  | Info tambahan (contoh: daya listrik)         |
+| denda         | Integer | Jumlah denda (jika ada)                      |
+| jml_bulan     | Integer | Jumlah bulan tagihan                         |
+
+---
+
+## Response Gagal
+
+```json
+{
+    "status": "Gagal",
+    "message": "JSON not valid !!"
+}
+```
+
+### Daftar Pesan Error
+
+| Pesan Error                | Penyebab                         |
+|----------------------------|----------------------------------|
+| JSON not valid !!          | Request body tidak lengkap       |
+| Signature not valid        | Signature tidak cocok            |
+| IP Not Allowed             | IP belum di-whitelist            |
+| {member_code} Is Blocked   | Akun member diblokir             |
+
+---
+
+## Contoh cURL
+
+```bash
+curl -X POST https://api.tokovoucher.id/v1/pascabayar-inq \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ref_id": "INQ20240115001",
+    "produk": "PLNPASCA",
+    "tujuan": "123456789012",
+    "signature": "abc123xyz",
+    "member_code": "M001"
+  }'
+```
+
+---
+
+## Catatan Penting
+
+- API ini **hanya untuk produk pascabayar** (category_id = 13)
+- Hasil inquiry akan di-cache untuk menghindari duplikasi request
+- Pastikan IP server Anda sudah ditambahkan di [whitelist](https://member.tokovoucher.net/pengaturan/ip-whitelist)
+- Setelah inquiry berhasil, lanjutkan dengan API pembayaran untuk menyelesaikan transaksi

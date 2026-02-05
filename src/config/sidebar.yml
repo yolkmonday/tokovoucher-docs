@@ -36,6 +36,10 @@
 - label: "Ewallet Reload"
   link: "/ewallet-reload"
 
+- label: Pascabayar
+  items:
+    - label: "Inquiry"
+      link: "/pascabayar/inquiry"
 
 - label: Report / Webhook
   items:

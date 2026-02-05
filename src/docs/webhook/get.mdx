@@ -1,33 +1,50 @@
 ---
-title: 'Report Transaksi'
-description: Melakukan pengecekan status transaksi
+title: 'Report Transaksi (IP/Otomax)'
+description: Format report untuk software Otomax, IRS, dan sejenisnya
 ---
 
-> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
-> Pastikan untuk Whitelist IP Kami : 188.166.243.56
-Tokovoucher akan mengirimkan balasan SUKSES / GAGAL ke url Anda dengan format sebagai berikut:
+Halaman ini menjelaskan format report yang kami kirimkan ke URL Anda jika menggunakan transaksi via IP (untuk Otomax, IRS, dll).
 
-### Deskripsi
-| Parameter   | Deskripsi                                                                                                              |
-|-------------|------------------------------------------------------------------------------------------------------------------------|
-| serverid      | Id transaksi / ref id Toko Voucher                                                                                                   | 
-| clientid      |Id transaksi / ref id client                                                                                                       | 
-| statuscode      | Status transaksi server 1=sukses 2=gagal                                     | 
-| kp   | Kode produk client                                                            | 
-| msisdn | Nomor tujuan transaksi                                                                                                     | 
-| sn   | Nomor seri transaksi / SN operator| 
-| msg   | Keterangan / pesan transaksi| 
+> **Penting:** Pastikan IP kami sudah di-whitelist di server Anda: `188.166.243.56`
 
+---
 
+## Format Report
 
-### Sampel Report Sukses
+Report dikirimkan via GET request ke URL Anda dengan parameter berikut:
+
+### Parameter
+
+| Parameter  | Deskripsi                                      |
+|------------|------------------------------------------------|
+| serverid   | ID transaksi dari Toko Voucher                 |
+| clientid   | ID referensi dari Anda                         |
+| statuscode | Status transaksi: `1` = sukses, `2` = gagal    |
+| kp         | Kode produk                                    |
+| msisdn     | Nomor tujuan transaksi                         |
+| sn         | Serial Number/kode voucher (jika ada)          |
+| msg        | Pesan detail transaksi                         |
+
+---
+
+## Contoh Report
+
+### Transaksi Sukses
 
 ```
 https://url-mitra.com/report?serverid=T220907KLNU024755&clientid=1541622&statuscode=1&kp=SP10&msisdn=081311223344&sn=02806600001851150526&msg=TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:10145. SALDO:126700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
-### Sampel Report Gagal
+### Transaksi Gagal
 
 ```
 https://url-mitra.com/report?serverid=T220907KLNU024756&clientid=1541623&statuscode=2&kp=SP10&msisdn=081311223344&sn=&msg=TRXID:T220907KLNU024755. REFID:1541622. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
+
+---
+
+## Tips Implementasi
+
+1. **Cek statuscode** - Gunakan `statuscode=1` untuk sukses dan `statuscode=2` untuk gagal
+2. **Simpan serverid** - Gunakan `serverid` sebagai referensi transaksi dari Toko Voucher
+3. **Parse msg** - Field `msg` berisi informasi lengkap termasuk harga dan saldo

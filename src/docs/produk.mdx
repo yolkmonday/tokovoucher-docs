@@ -1,22 +1,25 @@
 ---
 title: 'List Produk'
-description: Menampilkan List Kategori, Operator, Jenis dan Produk
+description: Melihat daftar kategori, operator, jenis, dan produk yang tersedia
 ---
 
+Halaman ini menjelaskan cara mendapatkan daftar produk yang tersedia di Toko Voucher.
 
-Menampilkan List Kategori, Operator, Jenis dan Produk
+**Daftar Endpoint:**
+- [List Kategori Produk](/produk/kategori) - Melihat semua kategori produk
+- [List Operator Produk](/produk/operator) - Melihat operator berdasarkan kategori
+- [List Jenis Produk](/produk/jenis) - Melihat jenis produk berdasarkan operator
+- [List Produk](/produk/list) - Melihat detail produk berdasarkan jenis
 
-- [Lihat List Kategori Produk ](https://docs.tokovoucher.net/produk/kategori)
-- [Lihat List Operator Produk ](https://docs.tokovoucher.net/produk/operator)
-- [Lihat List Jenis Produk ](https://docs.tokovoucher.net/produk/jenis)
-- [Lihat List Produk ](https://docs.tokovoucher.net/produk/list)
+---
 
 ## Pencarian Produk
 
-Pencarian produk bisa menggunakan Kode Produk Spesifik atau juga prefix nya.
-> Misalnya: <br/>
-> FF untuk prefix Free Fire akan menampilkan Produk dengan awal FF <br/>
-> FF5 akan menampilkan produk spesifik
+Anda juga bisa mencari produk langsung menggunakan kode produk atau prefix-nya.
+
+**Contoh:**
+- `FF` - Menampilkan semua produk yang diawali dengan "FF" (Free Fire)
+- `FF5` - Menampilkan produk spesifik dengan kode "FF5"
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom:12px;">
@@ -27,47 +30,17 @@ Pencarian produk bisa menggunakan Kode Produk Spesifik atau juga prefix nya.
 https://api.tokovoucher.net/produk/code?member_code=[member_code]&signature=[signature]&kode=[kode]
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| kode        | Kode produk atau prefix (contoh: FF, FF5, ML)                             | String    | Ya    |
+| signature   | Signature default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| kode | Bisa menggunakan prefix atau kode produk spesifik                                                                                                    | String    | Ya    |
-| signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
-
-### Sampel Response Gagal IP Not Allowed
+### Response Sukses
 
 ```json
-{
-    "status":0,
-    "error_msg":"Ip Not Allow"
-}
-```
-
-### Sampel Response Gagal Signature Invalid
-
-```json
-{
-    "status":0,
-    "error_msg":"Signature Invalid"
-}
-```
-
-### Sampel Response Produk Tidak Ditemukan
-
-```json
-{
-    "status": 0,
-    "rc": 500,
-    "error_msg": "Kode Produk Tidak Ditemukan"
-}
-```
-
-### Sampel Response Sukses
-```json
-
 {
     "status": 1,
     "rc": 200,
@@ -97,5 +70,32 @@ Berikut ini parameter / payload yang di harapkan :
         }
     ],
     "ts": 1665631083
+}
+```
+
+### Response Gagal
+
+**IP Tidak Diizinkan:**
+```json
+{
+    "status": 0,
+    "error_msg": "Ip Not Allow"
+}
+```
+
+**Signature Tidak Valid:**
+```json
+{
+    "status": 0,
+    "error_msg": "Signature Invalid"
+}
+```
+
+**Produk Tidak Ditemukan:**
+```json
+{
+    "status": 0,
+    "rc": 500,
+    "error_msg": "Kode Produk Tidak Ditemukan"
 }
 ```

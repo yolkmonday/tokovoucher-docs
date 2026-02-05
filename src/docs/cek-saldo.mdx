@@ -1,10 +1,9 @@
 ---
 title: 'Cek Saldo'
-description: Melakukan pengecekan saldo member
+description: Mengecek saldo akun member Anda
 ---
 
-
-Melakukan pengecekan saldo member
+API ini digunakan untuk mengecek sisa saldo pada akun member Anda.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
@@ -15,18 +14,14 @@ Melakukan pengecekan saldo member
 https://api.tokovoucher.net/member?member_code=[your_member_code]&signature=your_signature_default
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature default Anda (bisa dilihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| Signature   | Signature Default Anda, bisa dilihat pada member area | String    | Ya    |
-
-### Sampel Response Gagal
-
-### Sampel Response Sukses
+### Response Sukses
 
 ```json
 {
@@ -36,9 +31,23 @@ Berikut ini parameter / payload yang di harapkan :
     "data": {
         "saldo": 1000,
         "nama": "Tokovoucher Dev",
-        "member_code":"MEMBER20220801UAXH95"
+        "member_code": "MEMBER20220801UAXH95"
     },
     "ts": 1660204457
 }
+```
 
+| Field       | Deskripsi                    |
+|-------------|------------------------------|
+| saldo       | Jumlah saldo Anda saat ini   |
+| nama        | Nama akun member             |
+| member_code | Kode member Anda             |
+
+### Response Gagal
+
+```json
+{
+    "status": 0,
+    "error_msg": "Member tidak ditemukan !!"
+}
 ```

@@ -1,10 +1,9 @@
 ---
 title: 'Deposit'
-description: Melakukan request deposit saldo
+description: Membuat tiket deposit untuk mengisi saldo
 ---
 
-
-Untuk menerbitkan tiket deposit 
+API ini digunakan untuk membuat tiket deposit (top up saldo). Setelah tiket dibuat, Anda bisa melakukan pembayaran sesuai metode yang dipilih.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
@@ -15,18 +14,18 @@ Untuk menerbitkan tiket deposit
 https://api.tokovoucher.net/v1/deposit?member_code=[YOUR_MEMBER_CODE]&secret=[YOUR_SECRET_KEY]&nominal=[NOMINAL]&kode=[KODE_BAYAR]
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| secret      | Secret Key Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
+| nominal     | Jumlah deposit yang diinginkan                                            | Integer   | Ya    |
+| kode        | Kode metode pembayaran (lihat di [Kode Bank](/kode-bank))                 | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| secret   | Secret Key, bisa dilihat pada member area  [Lihat Disini](https://member.tokovoucher.net/pengaturan/secret-key)| String    | Ya    |
-| nominal | Nominal Deposit yang di inginkan | Int | Ya |
-| kode | Kode dari Metode Pembayaran yang di gunakan [Lihat Disini](/kode-bank) | String | Ya|
+---
 
-## Sampel Response Sukses
+## Response Sukses
 
 ### Metode QRIS
 
@@ -51,6 +50,8 @@ Berikut ini parameter / payload yang di harapkan :
 }
 ```
 
+> **Catatan:** Untuk QRIS, field `pay` berisi URL gambar QR Code yang bisa di-scan untuk pembayaran.
+
 ### Metode Bank Transfer
 
 ```json
@@ -72,10 +73,11 @@ Berikut ini parameter / payload yang di harapkan :
     },
     "ts": 1713409535
 }
-
 ```
 
-### Metode Virtual Akun
+> **Catatan:** Transfer ke rekening sesuai `pay` dengan jumlah `total_transfer` (sudah termasuk kode unik).
+
+### Metode Virtual Account
 
 ```json
 {
@@ -96,10 +98,11 @@ Berikut ini parameter / payload yang di harapkan :
     },
     "ts": 1713409777
 }
-
 ```
 
-## Sampel Response Gagal
+---
+
+## Response Gagal
 
 ```json
 {
@@ -109,5 +112,15 @@ Berikut ini parameter / payload yang di harapkan :
 }
 ```
 
+### Deskripsi Response
 
-
+| Field          | Deskripsi                                           |
+|----------------|-----------------------------------------------------|
+| metode         | Nama metode pembayaran                              |
+| pay            | Nomor rekening/VA atau URL QR Code                  |
+| pay_name       | Nama pemilik rekening (jika ada)                    |
+| nominal        | Nominal deposit yang diminta                        |
+| total_transfer | Total yang harus ditransfer                         |
+| kode_unik      | Kode unik untuk identifikasi (jika ada)             |
+| biaya_admin    | Biaya admin (jika ada)                              |
+| expired_at     | Batas waktu pembayaran                              |

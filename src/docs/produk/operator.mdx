@@ -1,10 +1,9 @@
 ---
 title: 'List Operator Produk'
-description: Menampilkan Operator produk yang tersedia
+description: Melihat daftar operator berdasarkan kategori
 ---
 
-
-Menampilkan Operator produk yang tersedia
+API ini digunakan untuk mendapatkan daftar operator produk berdasarkan kategori tertentu.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom:12px;">
@@ -12,38 +11,22 @@ Menampilkan Operator produk yang tersedia
 </div>
 
 ```
-
 https://api.tokovoucher.net/member/produk/operator/list?member_code=[MEMBER_CODE]&signature=[SIGNATURE]&id=[id_category_produk]
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter          | Deskripsi                                                                 | Tipe Data | Wajib |
+|--------------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code        | Kode member Anda                                                          | String    | Ya    |
+| id                 | ID kategori produk (dari API List Kategori)                               | String    | Ya    |
+| signature          | Signature default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| id_category_produk | ID Kategori Produk                                                                                                      | String    | Ya    |
-| signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
+---
 
-### Sampel Response Gagal IP Not Allowed
+## Response
 
-```json
-{
-    "status":0,
-    "error_msg":"Ip Not Allow"
-}
-```
-
-### Sampel Response Gagal Signature Invalid
-
-```json
-{
-    "status":0,
-    "error_msg":"Signature Invalid"
-}
-```
-### Sampel Response Sukses
+### Sukses
 
 ```json
 {
@@ -63,5 +46,32 @@ Berikut ini parameter / payload yang di harapkan :
     ],
     "ts": 1661497796
 }
+```
 
+| Field         | Deskripsi                              |
+|---------------|----------------------------------------|
+| id            | ID operator                            |
+| nama_category | Nama kategori                          |
+| nama          | Nama operator                          |
+| min_karakter  | Minimal karakter untuk nomor tujuan    |
+| max_karakter  | Maksimal karakter untuk nomor tujuan   |
+| logo          | URL logo operator                      |
+| status        | Status aktif (1 = aktif)               |
+
+### IP Tidak Diizinkan
+
+```json
+{
+    "status": 0,
+    "error_msg": "Ip Not Allow"
+}
+```
+
+### Signature Tidak Valid
+
+```json
+{
+    "status": 0,
+    "error_msg": "Signature Invalid"
+}
 ```

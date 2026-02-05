@@ -1,10 +1,9 @@
 ---
 title: 'Transaksi via W38S'
-description: Melakukan pembelian produk menggunakan Metode GET dan response text
+description: Melakukan pembelian produk untuk software W38S
 ---
 
-
-Melakukan pembelian produk menggunakan Metode GET dan response text untuk software W38S
+API ini digunakan untuk melakukan pembelian produk melalui software W38S.
 
 ### Endpoint
 
@@ -12,38 +11,50 @@ Melakukan pembelian produk menggunakan Metode GET dan response text untuk softwa
 http://trx-ip.tokovoucher.net/w38s
 ```
 
-### Panduan
+---
 
-![alt text](/w38s.png)
+## Panduan Konfigurasi
 
-### Deskripsi
-Berikut ini penjelasan form :
-> Untuk tujuan bisa menggabungkan tujuan + server_id
+![Panduan W38S](/w38s.png)
 
-| Form   | Deskripsi                                                                                                             | Wajib |
-|-------------|-----------------------------------------------------------------------------------------------------------------------|-------|
-| Jenis Server      | Pilih Otomax  | Ya    |
-| URL Transaksi      | URL Tokovoucher, Isi dengan <br/> **http://trx-ip.tokovoucher.net/w38s**      | Ya    |
-| User ID   | Member code anda bisa dilihat pada member area [Pengaturan Secret Key ](https://member.tokovoucher.net/pengaturan/secret-key)                                                                                                          | Ya    |
-| PIN   | Isi dengan 0000   | Ya    |
-| Password   | Isi dengan Signature Default Anda, Note: Signature bisa dilihat pada member area [Pengaturan Secret Key ](https://member.tokovoucher.net/pengaturan/secret-key)    | Ya    |
+### Pengisian Form
 
+| Form          | Isi Dengan                                                                           | Wajib |
+|---------------|--------------------------------------------------------------------------------------|-------|
+| Jenis Server  | Pilih **Otomax**                                                                     | Ya    |
+| URL Transaksi | `http://trx-ip.tokovoucher.net/w38s`                                                 | Ya    |
+| User ID       | Kode member Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | Ya    |
+| PIN           | Isi dengan `0000`                                                                    | Ya    |
+| Password      | Signature Default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | Ya    |
 
+> **Tips:** Parameter tujuan bisa digabung dengan server_id jika produk membutuhkan.
 
-### Sampel Response Pending
+---
+
+## Response (Format Teks)
+
+### Pending
+
 ```
 TRXID:T220907KLNU024757. REFID:1541624. PENDING. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
-### Sampel Response Sukses
+### Sukses
+
 ```
 TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:10145. SALDO:126700. KP:SP10.081311223344 TGL:2022-06-21
 ```
-### Sampel Response Gagal
+
+### Gagal
+
 ```
 TRXID:T220907KLNU024756. REFID:1541623. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
+---
 
-> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
-> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.net/webhook/get)
+## Catatan Penting
+
+Setiap ada perubahan status transaksi, kami akan mengirimkan report ke URL Anda.
+
+[Lihat Dokumentasi Report/Webhook untuk IP](/webhook/get)

@@ -1,10 +1,9 @@
 ---
-title: 'List  Produk'
-description: Menampilkan  produk yang tersedia
+title: 'List Produk'
+description: Melihat daftar produk berdasarkan jenis
 ---
 
-
-Menampilkan produk yang tersedia
+API ini digunakan untuk mendapatkan daftar produk berdasarkan jenis produk tertentu.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom:12px;">
@@ -15,37 +14,21 @@ Menampilkan produk yang tersedia
 https://api.tokovoucher.net/member/produk/list?member_code=[MEMBER_CODE]&signature=[SIGNATURE]&id_jenis=[id_jenis_produk]
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| id_jenis    | ID jenis produk (dari API List Jenis)                                     | String    | Ya    |
+| signature   | Signature default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| id_jenis | ID Jenis yang dipilih                                                                                                    | String    | Ya    |
-| signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
+---
 
-### Sampel Response Gagal IP Not Allowed
+## Response
 
-```json
-{
-    "status":0,
-    "error_msg":"Ip Not Allow"
-}
-```
-
-### Sampel Response Gagal Signature Invalid
+### Sukses
 
 ```json
-{
-    "status":0,
-    "error_msg":"Signature Invalid"
-}
-```
-
-### Sampel Response Sukses
-```json
-
 {
     "status": 1,
     "rc": 200,
@@ -56,24 +39,54 @@ Berikut ini parameter / payload yang di harapkan :
             "code": "ML5",
             "category_name": "Voucher Game",
             "operator_produk": "Free Fire",
-            "jenis_name": "otomatis",
-            "nama_produk": "mobile legend 5 dm",
-            "deskripsi": "mobile legend",
+            "jenis_name": "Otomatis",
+            "nama_produk": "Mobile Legend 5 DM",
+            "deskripsi": "Top up 5 diamond Mobile Legends",
             "price": 1000,
             "status": 1
         },
         {
             "id": 2,
-            "code": "FDT32",
+            "code": "ML10",
             "category_name": "Voucher Game",
             "operator_produk": "Free Fire",
-            "jenis_name": "jenis b",
-            "nama_produk": "Free Fire",
-            "deskripsi": "free fires",
-            "price": 1000,
+            "jenis_name": "Otomatis",
+            "nama_produk": "Mobile Legend 10 DM",
+            "deskripsi": "Top up 10 diamond Mobile Legends",
+            "price": 2000,
             "status": 1
         }
     ],
     "ts": 1661498219
+}
+```
+
+| Field          | Deskripsi                     |
+|----------------|-------------------------------|
+| id             | ID produk                     |
+| code           | Kode produk (untuk transaksi) |
+| category_name  | Nama kategori                 |
+| operator_produk| Nama operator                 |
+| jenis_name     | Nama jenis produk             |
+| nama_produk    | Nama produk                   |
+| deskripsi      | Deskripsi produk              |
+| price          | Harga produk                  |
+| status         | Status aktif (1 = aktif)      |
+
+### IP Tidak Diizinkan
+
+```json
+{
+    "status": 0,
+    "error_msg": "Ip Not Allow"
+}
+```
+
+### Signature Tidak Valid
+
+```json
+{
+    "status": 0,
+    "error_msg": "Signature Invalid"
 }
 ```

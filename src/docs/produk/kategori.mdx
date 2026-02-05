@@ -1,10 +1,9 @@
 ---
 title: 'List Kategori Produk'
-description: Menampilkan kategori produk yang tersedia
+description: Melihat daftar kategori produk yang tersedia
 ---
 
-
-Menampilkan kategori produk yang tersedia
+API ini digunakan untuk mendapatkan daftar semua kategori produk yang tersedia di Toko Voucher.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom:12px;">
@@ -15,34 +14,18 @@ Menampilkan kategori produk yang tersedia
 https://api.tokovoucher.net/member/produk/category/list?member_code=[MEMBER_CODE]&signature=[SIGNATURE]
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Signature default anda Note: Signature detault bisa dilihat pada member area | String    | Ya    |
+---
 
-### Sampel Response Gagal IP Not Allowed
+## Response
 
-```json
-{
-    "status":0,
-    "error_msg":"Ip Not Allow"
-}
-```
-
-### Sampel Response Gagal Signature Invalid
-
-```json
-{
-    "status":0,
-    "error_msg":"Signature Invalid"
-}
-```
-
-### Sampel Response Sukses
+### Sukses
 
 ```json
 {
@@ -56,10 +39,32 @@ Berikut ini parameter / payload yang di harapkan :
         },
         {
             "id": 2,
-            "nama": "direct topup"
+            "nama": "Direct Topup"
         }
     ],
     "ts": 1661497350
 }
+```
 
+| Field | Deskripsi              |
+|-------|------------------------|
+| id    | ID kategori            |
+| nama  | Nama kategori          |
+
+### IP Tidak Diizinkan
+
+```json
+{
+    "status": 0,
+    "error_msg": "Ip Not Allow"
+}
+```
+
+### Signature Tidak Valid
+
+```json
+{
+    "status": 0,
+    "error_msg": "Signature Invalid"
+}
 ```

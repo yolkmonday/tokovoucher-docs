@@ -1,48 +1,68 @@
 ---
 title: 'Chatbot Telegram'
-description: Melakukan pengecekan status transaksi
+description: Panduan menggunakan chatbot Telegram untuk transaksi
 ---
 
+Toko Voucher menyediakan bot Telegram yang memudahkan Anda melakukan transaksi dan cek informasi akun langsung dari Telegram.
 
-## Tautkan akun ke chatbot
+---
 
-Cara menautkan akun member tokovoucher dengan akun chatbot
-<ol>
-  <li>Buat grub telegram baru khusus untuk tokovoucher bot,</li>
-  <li>Tambahkan bot <strong>@tokovoucherbot</strong> ke dalam grup, dan jadikan bot sebagai admin</li>
-  <li>Kemudian ketikkan <strong>/start</strong> di grub. Grub id akan muncul, Copy ID tersebut ke Form Pengaturan Chatbot Telegram <a target="_blank" href="https://member.tokovoucher.net/pengaturan/chatbot">Klik Disini</a></li>
-</ol>
+## Cara Menautkan Akun
 
-## Cek Informasi Akun
+Ikuti langkah berikut untuk menghubungkan akun member Anda dengan bot Telegram:
 
-Format pesan untuk melakukan pengecekan akun
+1. **Buat grup Telegram baru** - Buat grup khusus untuk bot Toko Voucher
+2. **Tambahkan bot** - Invite `@tokovoucherbot` ke dalam grup dan jadikan sebagai admin
+3. **Aktifkan bot** - Ketik `/start` di grup. Bot akan menampilkan Group ID
+4. **Simpan Group ID** - Copy ID tersebut ke [Form Pengaturan Chatbot](https://member.tokovoucher.net/pengaturan/chatbot)
+
+---
+
+## Perintah yang Tersedia
+
+### Cek Informasi Akun
+
+Untuk melihat informasi akun dan saldo:
 
 ```
 info
 ```
 
-## Request Tiket Deposit
+---
 
-Format pesan untuk melakukan request tiket deposit.
+### Request Tiket Deposit
 
-> Untuk Kode Bank bisa di lihat di [Kode Bank](/kode-bank)
+Untuk membuat tiket deposit, gunakan salah satu format berikut:
 
-### Cara 1
+**Format 1:**
 ```
 tiket.[KODE_BANK].[NOMINAL]
 ```
-Contoh:<br/>
-Apabila ingin melakukan deposit ke BCA sebesar Rp.100.000, maka format pesannya adalah
+
+**Format 2:**
+```
+depo.[KODE_BANK].[NOMINAL]
+```
+
+**Contoh:**
+
+Deposit Rp 100.000 via BCA:
 ```
 tiket.bca.100000
 ```
 
-### Cara 2
-```
-depo.[KODE_BANK].[NOMINAL]
-```
-Contoh:<br/>
-Apabila ingin melakukan deposit ke BCA sebesar Rp.100.000, maka format pesannya adalah
+atau
+
 ```
 depo.bca.100000
 ```
+
+> **Catatan:** Untuk daftar kode bank, lihat di [Kode Bank](/kode-bank)
+
+---
+
+## Tips Penggunaan
+
+- Pastikan bot sudah menjadi **admin** di grup
+- Satu grup hanya bisa ditautkan ke **satu akun member**
+- Semua notifikasi transaksi akan dikirim ke grup yang sudah ditautkan

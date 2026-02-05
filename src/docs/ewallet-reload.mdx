@@ -1,11 +1,9 @@
 ---
-title: 'Ewallet Reload'
-description: Melakukan ewallet reload
+title: 'E-Wallet Reload'
+description: Melakukan top up saldo e-wallet
 ---
 
-
-Untuk melakukan Ewallet Reload
-
+API ini digunakan untuk melakukan top up (reload) ke berbagai e-wallet seperti OVO, GoPay, Dana, dll.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
@@ -16,28 +14,52 @@ Untuk melakukan Ewallet Reload
 https://api.tokovoucher.net/v1/transfer/ewallet
 ```
 
-> Untuk kode ewallet bisa di cek di [Lihat Kode eWallet](https://member.tokovoucher.net/list-wallet)    
+> Lihat daftar kode e-wallet yang tersedia di [Kode E-Wallet](https://member.tokovoucher.net/list-wallet)
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+### Parameter
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| ewallet      | Kode Ewallet di Toko Voucher [Lihat Kode eWallet](https://member.tokovoucher.net/list-wallet)                                                                                                          | String    | Ya    |
-| tujuan      | Nomor Ewallet Tujuan                                                                                                      | String    | Ya    |
-| nominal | Nominal yang akan di transfer                                                                                                      | String    | Ya    |
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| ref_id      | ID referensi unik dari Anda (untuk tracking)                              | String    | Ya    |
+| ewallet     | Kode e-wallet tujuan (lihat [Kode E-Wallet](https://member.tokovoucher.net/list-wallet)) | String    | Ya    |
+| tujuan      | Nomor e-wallet tujuan                                                     | String    | Ya    |
+| nominal     | Jumlah yang akan ditransfer                                               | Integer   | Ya    |
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature dengan formula `md5(MEMBER_CODE:SECRET:REF_ID)`                 | String    | Ya    |
 
+> **Cara membuat signature:** Gabungkan `MEMBER_CODE`, `SECRET`, dan `REF_ID` dengan tanda titik dua (:), lalu hash dengan MD5.
+> Contoh: `md5("M001:secretkey123:TRX001")`
 
-```json title=Contoh
+### Contoh Request
+
+```json
 {
-    "member_code":"M2305TEXTXX353GC",
-    "ref_id":"TESTFD21",
-    "ewallet":"OVO",
-    "tujuan":"90000000000",
-    "signature":"9c0c50f16xxxxfb5dd106f718e3b83dd9",
-    "nominal":12000
+    "member_code": "M2305TEXTXX353GC",
+    "ref_id": "TESTFD21",
+    "ewallet": "OVO",
+    "tujuan": "081234567890",
+    "signature": "9c0c50f16xxxxfb5dd106f718e3b83dd9",
+    "nominal": 50000
+}
+```
+
+### Response Sukses
+
+```json
+{
+    "status": "sukses",
+    "message": "Top up berhasil diproses",
+    "ref_id": "TESTFD21",
+    "trx_id": "T240115EFGH67890",
+    "sisa_saldo": 950000
+}
+```
+
+### Response Gagal
+
+```json
+{
+    "status": "gagal",
+    "message": "Nomor e-wallet tidak valid"
 }
 ```

@@ -1,10 +1,9 @@
 ---
-title: 'Transaksi via IP'
-description: Melakukan pembelian produk menggunakan Metode GET dan response text
+title: 'Transaksi via IP (Otomax, IRS, dll)'
+description: Melakukan pembelian produk untuk software Otomax, IRS, dan sejenisnya
 ---
 
-
-Melakukan pembelian produk menggunakan Metode GET dan response text untuk software Otomax, IRS dan lain lain
+API ini digunakan untuk melakukan pembelian produk melalui software seperti Otomax, IRS, dan software pulsa lainnya. Response berupa teks (bukan JSON).
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom:12px;">
@@ -15,34 +14,45 @@ Melakukan pembelian produk menggunakan Metode GET dan response text untuk softwa
 http://trx-ip.tokovoucher.net/trx?ref_id=[ref_id]&produk=[kode_produk]&tujuan=[tujuan]&secret=[secret]&member_code=[member_code]&server_id=[server_id]
 ```
 
-### Deskripsi
-Berikut ini parameter  yang di harapkan :
-> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
+### Parameter
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda atau dari Software yang anda gunakan                                                                                                      | String    | Ya    |
-| produk      | Kode produk di Toko Voucher                                                                                                            | String    | Ya    |
-| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id                                                                                                       | String    | Ya    |
-| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| secret   | Secret Key Anda Note: Secret bisa dilihat pada member area | String    | Ya    |
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| ref_id      | ID referensi dari software yang Anda gunakan                              | String    | Ya    |
+| produk      | Kode produk di Toko Voucher                                               | String    | Ya    |
+| tujuan      | Nomor tujuan (Player ID, User ID, atau Nomor HP)                          | String    | Ya    |
+| server_id   | Server ID game (kosongkan jika tidak diperlukan)                          | String    | Tidak |
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| secret      | Secret Key Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
 
+> **Tips:** Parameter `tujuan` bisa digabung dengan `server_id` jika diperlukan.
 
-### Sampel Response Pending
+---
+
+## Response (Format Teks)
+
+### Pending
+
 ```
 TRXID:T220907KLNU024757. REFID:1541624. PENDING. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
-### Sampel Response Sukses
+### Sukses
+
 ```
 TRXID:T220907KLNU024755. REFID:1541622. SUKSES, SN:02806600001851150526. HRG:10145. SALDO:126700. KP:SP10.081311223344 TGL:2022-06-21
 ```
-### Sampel Response Gagal
+
+### Gagal
+
 ```
 TRXID:T220907KLNU024756. REFID:1541623. GAGAL, Nomor Tujuan Salah. HRG:10145. SALDO:121700. KP:SP10.081311223344 TGL:2022-06-21
 ```
 
+---
 
-> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
-> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.net/webhook/get)
+## Catatan Penting
+
+Setiap ada perubahan status transaksi, kami akan mengirimkan report ke URL Anda.
+
+[Lihat Dokumentasi Report/Webhook untuk IP](/webhook/get)

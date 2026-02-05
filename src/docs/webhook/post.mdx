@@ -1,46 +1,82 @@
 ---
-title: 'Webhook POST / GET'
-description: Melakukan pengecekan status transaksi
+title: 'Webhook - POST/GET'
+description: Format webhook yang dikirim setelah transaksi selesai
 ---
 
-Ini merupakan sampel webhook yang kami kirimkan kepada anda jika menggunakan transaksi melalui metode POST / GET
+Halaman ini menjelaskan format webhook (callback) yang kami kirimkan ke server Anda setiap kali ada perubahan status transaksi.
 
-> Kami akan mengirimkan report ke webhook anda setiap ada perubahan status transaksi
-> Pastikan untuk Whitelist IP Kami : 188.166.243.56
+> **Penting:** Pastikan IP kami sudah di-whitelist di server Anda: `188.166.243.56`
 
-### Header
-Header yang kami kirimkan dengan Key `X-TokoVoucher-Authorization` dan value dengan Formula `md5(MEMBER_CODE:SECRET:REF_ID)` :
+---
 
+## Header
+
+Setiap request webhook menyertakan header untuk validasi:
+
+| Header Key                   | Value                                      |
+|------------------------------|--------------------------------------------|
+| X-TokoVoucher-Authorization  | `md5(MEMBER_CODE:SECRET:REF_ID)`           |
+
+**Contoh:**
 ```
-"X-TokoVoucher-Authorization": "bd134207f74532a8b094676c4a2ca9ed" //md5(MEMBER_CODE:SECRET:REF_ID)
+"X-TokoVoucher-Authorization": "bd134207f74532a8b094676c4a2ca9ed"
 ```
 
-### Sampel Webhook Sukses
+Gunakan header ini untuk memvalidasi bahwa request benar-benar dari Toko Voucher.
+
+---
+
+## Format Webhook
+
+### Transaksi Sukses
 
 ```json
 {
-  "status": "sukses",
-  "message": "asd",
-  "sn": "ads",
-  "ref_id": "tes12",
-  "trx_id": "123jad",
-  "produk": "FF5",
-  "sisa_saldo": 1000000,
-  "price": 10000
+    "status": "sukses",
+    "message": "Transaksi berhasil",
+    "sn": "02806600001851150526",
+    "ref_id": "tes12",
+    "trx_id": "123jad",
+    "produk": "FF5",
+    "sisa_saldo": 1000000,
+    "price": 10000
 }
 ```
 
-### Sampel Webhook Gagal
+### Transaksi Gagal
 
 ```json
 {
-  "status": "gagal",
-  "message": "asd",
-  "sn": "ads",
-  "ref_id": "tes12",
-  "trx_id": "123jad",
-  "produk": "FF5",
-  "sisa_saldo": 1000000,
-  "price": 10000
+    "status": "gagal",
+    "message": "Nomor tujuan tidak valid",
+    "sn": "",
+    "ref_id": "tes12",
+    "trx_id": "123jad",
+    "produk": "FF5",
+    "sisa_saldo": 1000000,
+    "price": 10000
 }
 ```
+
+---
+
+## Penjelasan Field
+
+| Field      | Deskripsi                                           |
+|------------|-----------------------------------------------------|
+| status     | Status akhir transaksi (`sukses` atau `gagal`)      |
+| message    | Pesan detail transaksi                              |
+| sn         | Serial Number/kode voucher (jika ada)               |
+| ref_id     | ID referensi dari Anda                              |
+| trx_id     | ID transaksi dari Toko Voucher                      |
+| produk     | Kode produk yang dibeli                             |
+| sisa_saldo | Sisa saldo Anda setelah transaksi                   |
+| price      | Harga transaksi                                     |
+
+---
+
+## Tips Implementasi
+
+1. **Validasi Header** - Selalu cek header `X-TokoVoucher-Authorization` untuk memastikan request valid
+2. **Response 200** - Pastikan server Anda mengembalikan HTTP 200 agar kami tahu webhook berhasil diterima
+3. **Idempotency** - Simpan `trx_id` untuk menghindari pemrosesan duplikat jika webhook dikirim ulang

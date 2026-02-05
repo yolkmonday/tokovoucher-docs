@@ -1,10 +1,9 @@
 ---
-title: 'Bank Transfer'
-description: Melakukan transaksi transfer 
+title: 'Transfer Bank'
+description: Melakukan transfer uang ke rekening bank
 ---
 
-
-Untuk melakukan transfer bank
+API ini digunakan untuk melakukan transfer uang ke rekening bank tujuan.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
@@ -15,30 +14,52 @@ Untuk melakukan transfer bank
 https://api.tokovoucher.net/v1/transfer/bank
 ```
 
-> Untuk kode bank bisa di cek di [Lihat Kode Bank](https://member.tokovoucher.net/list-bank)    
+> Lihat daftar kode bank yang tersedia di [Kode Bank](https://member.tokovoucher.net/list-bank)
 
+### Parameter
 
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| ref_id      | ID referensi unik dari Anda (untuk tracking)                              | String    | Ya    |
+| bank        | Kode bank tujuan (lihat [Kode Bank](https://member.tokovoucher.net/list-bank)) | String    | Ya    |
+| tujuan      | Nomor rekening penerima                                                   | String    | Ya    |
+| nominal     | Jumlah uang yang akan ditransfer                                          | Integer   | Ya    |
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature dengan formula `md5(MEMBER_CODE:SECRET:REF_ID)`                 | String    | Ya    |
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
+> **Cara membuat signature:** Gabungkan `MEMBER_CODE`, `SECRET`, dan `REF_ID` dengan tanda titik dua (:), lalu hash dengan MD5.
+> Contoh: `md5("M001:secretkey123:TRX001")`
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| bank      | Kode Bank di Toko Voucher (Bisa menggunakan Bank Code ataupun Bank ID) [Lihat Kode Bank](https://member.tokovoucher.net/list-bank)                                                                                                          | String    | Ya    |
-| tujuan      | Nomor Rekening Penerima                                                                                                      | String    | Ya    |
-| nominal | Nominal yang akan di transfer                                                                                                      | String    | Ya    |
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+### Contoh Request
 
-
-```json title=Contoh
+```json
 {
-    "member_code":"M2305TEXTXX353GC",
-    "ref_id":"TESTFD21",
-    "bank":"mandiri",
-    "tujuan":"90000000000",
-    "signature":"9c0c50f16xxxxfb5dd106f718e3b83dd9",
-    "nominal":12000
+    "member_code": "M2305TEXTXX353GC",
+    "ref_id": "TESTFD21",
+    "bank": "mandiri",
+    "tujuan": "90000000000",
+    "signature": "9c0c50f16xxxxfb5dd106f718e3b83dd9",
+    "nominal": 12000
+}
+```
+
+### Response Sukses
+
+```json
+{
+    "status": "sukses",
+    "message": "Transfer berhasil diproses",
+    "ref_id": "TESTFD21",
+    "trx_id": "T240115ABCD12345",
+    "sisa_saldo": 988000
+}
+```
+
+### Response Gagal
+
+```json
+{
+    "status": "gagal",
+    "message": "Saldo tidak mencukupi"
 }
 ```

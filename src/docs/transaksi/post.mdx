@@ -1,10 +1,9 @@
 ---
-title: 'Transaksi dengan Metode POST'
-description: Melakukan pembelian produk menggunakan Metode POST
+title: 'Transaksi - Metode POST'
+description: Melakukan pembelian produk dengan metode POST
 ---
 
-
-Melakukan pembelian produk menggunakan Metode POST
+API ini digunakan untuk melakukan pembelian produk (pulsa, game, dll) menggunakan metode POST.
 
 ### Endpoint
 <div style="font-family:monospace;margin-bottom: 12px;">
@@ -15,95 +14,111 @@ Melakukan pembelian produk menggunakan Metode POST
 https://api.tokovoucher.net/v1/transaksi
 ```
 
-### Deskripsi
-Berikut ini parameter / payload yang di harapkan :
-> Untuk tujuan bisa menggabungkan tujuan + server_id atau bisa juga dipisah
+### Parameter
 
-| Parameter   | Deskripsi                                                                                                              | Tipe Data | Wajib |
-|-------------|------------------------------------------------------------------------------------------------------------------------|-----------|-------|
-| ref_id      | Ref ID unik anda                                                                                                       | String    | Ya    |
-| produk      | Kode produk di Toko Voucher                                                                                                             | String    | Ya    |
-| tujuan      | Tujuan pengisian, bisa menggunakan Player ID atau User ID  atau Nomor HP atau gabungan tujuan + server_id                                                                                                        | String    | Ya    |
-| server_id   | Isi string kosong "" jika produk tidak memiliki Server ID                                                              | String    | Tidak    |
-| member_code | Member code anda                                                                                                       | String    | Ya    |
-| signature   | Formula signature `md5(MEMBER_CODE:SECRET:REF_ID)` Note: Member Code & Secret bisa dilihat pada member area | String    | Ya    |
+| Parameter   | Deskripsi                                                                 | Tipe Data | Wajib |
+|-------------|---------------------------------------------------------------------------|-----------|-------|
+| ref_id      | ID referensi unik dari Anda (untuk tracking transaksi)                    | String    | Ya    |
+| produk      | Kode produk di Toko Voucher (contoh: FF5, ML86)                           | String    | Ya    |
+| tujuan      | Nomor tujuan (Player ID, User ID, atau Nomor HP)                          | String    | Ya    |
+| server_id   | Server ID game (kosongkan `""` jika tidak diperlukan)                     | String    | Tidak |
+| member_code | Kode member Anda                                                          | String    | Ya    |
+| signature   | Signature dengan formula `md5(MEMBER_CODE:SECRET:REF_ID)`                 | String    | Ya    |
 
+> **Tips:** Parameter `tujuan` bisa digabung dengan `server_id` (contoh: `"12345678|2001"`) atau dipisah menggunakan parameter `server_id` terpisah.
 
-```json title=Contoh
-{
-    "ref_id":"tx334234",
-    "produk":"FF5",
-    "tujuan":"034344234",
-    "server_id":"exr33f"
-    "member_code":"MEM3532234432X34",
-    "signature":"f109a98c4f298ade23fb6c1f067dce53"
-}
-```
-### Sampel Response Pending
-```json
-{
-    "status":"pending",
-    "message":"TRXID:T220907UYXI026607. REFID:5467110. PENDING. HRG:1600. SALDO:17322134. KP:S1.085211223344 TGL:2022-09-07 22:46:36",
-    "sn":"",
-    "ref_id":"5467110",
-    "trx_id":"T220907UYXI026607",
-    "produk":"s1",
-    "sisa_saldo":17322134,
-    "price":1600
-}
-```
-
-### Sampel Response Sukses
-```json
-{
-    "status":"sukses",
-    "message":"TRXID:T220907HTRK027479. REFID:6915241. SUKSES, SN: DLINR-_-. RefId : 11183039941543874221. HRG:789. SALDO:17317805. KP:FF5.50714103 TGL:2022-09-07 22:59:47",
-    "sn":"DLINR-_-. RefId : 11183039941543874221",
-    "ref_id":"6915241",
-    "trx_id":"T220907HTRK027479",
-    "produk":"ff5",
-    "sisa_saldo":17317805,
-    "price":789
-}
-```
-
-### Sampel Response Gagal
+### Contoh Request
 
 ```json
 {
-    "status":"gagal",
-    "message":"TRXID:T220907JKYI026608. REFID:5467112. GAGAL, Nomor Tujuan Salah. HRG:1600. SALDO:172200. KP:S1.085222334455 TGL:2022-09-07 22:46:36",
-    "sn":"Nomor Tujuan Salah",
-    "ref_id":"5467112",
-    "trx_id":"T220907JKYI026608",
-    "produk":"S1",
-    "sisa_saldo":172200,
-    "price":1600
+    "ref_id": "tx334234",
+    "produk": "FF5",
+    "tujuan": "034344234",
+    "server_id": "exr33f",
+    "member_code": "MEM3532234432X34",
+    "signature": "f109a98c4f298ade23fb6c1f067dce53"
 }
-
 ```
 
-### Sampel Response Gagal IP Not Allowed
+---
+
+## Response
+
+### Pending (Sedang Diproses)
 
 ```json
 {
-    "status":0,
-    "error_msg":"Ip Not Allow"
+    "status": "pending",
+    "message": "TRXID:T220907UYXI026607. REFID:5467110. PENDING. HRG:1600. SALDO:17322134. KP:S1.085211223344 TGL:2022-09-07 22:46:36",
+    "sn": "",
+    "ref_id": "5467110",
+    "trx_id": "T220907UYXI026607",
+    "produk": "s1",
+    "sisa_saldo": 17322134,
+    "price": 1600
 }
 ```
 
-### Sampel Response Gagal Signature Invalid
+### Sukses
 
 ```json
 {
-    "status":0,
-    "error_msg":"Signature Invalid"
+    "status": "sukses",
+    "message": "TRXID:T220907HTRK027479. REFID:6915241. SUKSES, SN: DLINR-_-. RefId : 11183039941543874221. HRG:789. SALDO:17317805. KP:FF5.50714103 TGL:2022-09-07 22:59:47",
+    "sn": "DLINR-_-. RefId : 11183039941543874221",
+    "ref_id": "6915241",
+    "trx_id": "T220907HTRK027479",
+    "produk": "ff5",
+    "sisa_saldo": 17317805,
+    "price": 789
 }
 ```
 
-> Kami akan mengirimkan report kepada anda setiap ada perubahan status transaksi
-> [Lihat Dokumentasi Report / Webhook](https://docs.tokovoucher.net/webhook/post)
+### Gagal
 
+```json
+{
+    "status": "gagal",
+    "message": "TRXID:T220907JKYI026608. REFID:5467112. GAGAL, Nomor Tujuan Salah. HRG:1600. SALDO:172200. KP:S1.085222334455 TGL:2022-09-07 22:46:36",
+    "sn": "Nomor Tujuan Salah",
+    "ref_id": "5467112",
+    "trx_id": "T220907JKYI026608",
+    "produk": "S1",
+    "sisa_saldo": 172200,
+    "price": 1600
+}
+```
 
+---
 
+## Response Error
 
+### IP Tidak Diizinkan
+
+```json
+{
+    "status": 0,
+    "error_msg": "Ip Not Allow"
+}
+```
+
+> Pastikan IP server Anda sudah ditambahkan di whitelist pada [Member Area](https://member.tokovoucher.net/pengaturan/ip-whitelist).
+
+### Signature Tidak Valid
+
+```json
+{
+    "status": 0,
+    "error_msg": "Signature Invalid"
+}
+```
+
+> Pastikan formula signature sudah benar: `md5(MEMBER_CODE:SECRET:REF_ID)`
+
+---
+
+## Catatan Penting
+
+Setiap ada perubahan status transaksi (dari pending ke sukses/gagal), kami akan mengirimkan notifikasi ke webhook Anda.
+
+[Lihat Dokumentasi Webhook](/webhook/post)

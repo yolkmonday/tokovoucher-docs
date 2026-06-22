@@ -1,9 +1,9 @@
 ---
 title: 'List Produk Full'
-description: Mendapatkan semua data produk (kategori dan jenis) dalam satu request
+description: Mendapatkan semua data produk (kategori, operator, jenis, dan produk) dalam satu request
 ---
 
-API ini digunakan untuk mengambil seluruh data produk sekaligus — kategori dan jenis produk — dalam satu request. Cocok untuk kebutuhan sinkronisasi atau caching produk di sisi klien.
+API ini mengembalikan seluruh data produk sekaligus — kategori, operator, jenis, dan produk — dalam satu request. Cocok untuk sinkronisasi atau caching produk di sisi klien.
 
 ### Endpoint
 
@@ -12,7 +12,7 @@ API ini digunakan untuk mengambil seluruh data produk sekaligus — kategori dan
 </div>
 
 ```
-https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signature=[signature]
+https://api.tokovoucher.net/produk/full?member_code=[member_code]&signature=[signature]
 ```
 
 ### Parameter
@@ -21,7 +21,6 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
 |-------------|---------------------------------------------------------------------------|-----------|-------|
 | member_code | Kode member Anda                                                          | String    | Ya    |
 | signature   | Signature default Anda (lihat di [Member Area](https://member.tokovoucher.net/pengaturan/secret-key)) | String    | Ya    |
-| kode        | Filter berdasarkan kode produk atau prefix (contoh: `FF`, `FF5`, `ML`)   | String    | Tidak |
 
 ### Response Sukses
 
@@ -35,10 +34,15 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
             {
                 "id": 1,
                 "nama": "Topup Game"
-            },
+            }
+        ],
+        "operator": [
             {
-                "id": 2,
-                "nama": "Voucher Game"
+                "id": 1,
+                "nama": "Free Fire",
+                "category_id": 1,
+                "logo": "https://cdn.tokovoucher.net/logo/freefire.png",
+                "status": 1
             }
         ],
         "jenis": [
@@ -49,14 +53,19 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
                 "operator_id": 1,
                 "helper_html": "<p>Masukkan Player ID Free Fire Anda</p>",
                 "status": 1
-            },
+            }
+        ],
+        "produk": [
             {
-                "id": 2,
-                "nama": "Free Fire ID Promo",
-                "format_form": "[{\"name\":\"tujuan\",\"label\":\"Player ID\",\"is_dropdown\":0,\"data\":[]},{\"name\":\"server_id\",\"label\":\"\",\"is_dropdown\":0,\"data\":[]}]",
+                "id": 1,
+                "kode_produk": "FF5",
+                "nama": "Free Fire 5 Diamond",
+                "deskripsi": "Free Fire 5 Diamond",
+                "price": 1500,
+                "status": 1,
+                "kategori_id": 1,
                 "operator_id": 1,
-                "helper_html": "<p>Masukkan Player ID Free Fire Anda</p>",
-                "status": 1
+                "jenis_id": 1
             }
         ]
     },
@@ -71,6 +80,16 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
 | id    | Int    | ID kategori   |
 | nama  | String | Nama kategori |
 
+**Field `operator`:**
+
+| Field       | Tipe   | Deskripsi                                   |
+|-------------|--------|---------------------------------------------|
+| id          | Int    | ID operator                                 |
+| nama        | String | Nama operator                               |
+| category_id | Int    | ID kategori yang menaungi operator ini      |
+| logo        | String | URL logo operator                           |
+| status      | Int    | Status aktif (`1` = aktif, `0` = nonaktif)  |
+
 **Field `jenis`:**
 
 | Field        | Tipe   | Deskripsi                                      |
@@ -81,6 +100,20 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
 | operator_id  | Int    | ID operator yang menaungi jenis ini            |
 | helper_html  | String | Panduan pengisian form (HTML string)           |
 | status       | Int    | Status aktif (`1` = aktif, `0` = nonaktif)     |
+
+**Field `produk`:**
+
+| Field       | Tipe   | Deskripsi                                   |
+|-------------|--------|---------------------------------------------|
+| id          | Int    | ID produk                                   |
+| kode_produk | String | Kode produk (digunakan untuk transaksi)     |
+| nama        | String | Nama produk                                 |
+| deskripsi   | String | Deskripsi produk                            |
+| price       | Int    | Harga jual (sudah disesuaikan dengan level member) |
+| status      | Int    | Status aktif (`1` = aktif, `0` = nonaktif)  |
+| kategori_id | Int    | ID kategori produk                          |
+| operator_id | Int    | ID operator produk                          |
+| jenis_id    | Int    | ID jenis produk                             |
 
 ### Response Gagal
 
@@ -97,14 +130,5 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
 {
     "status": 0,
     "error_msg": "Signature Invalid"
-}
-```
-
-**Produk Tidak Ditemukan:**
-```json
-{
-    "status": 0,
-    "rc": 500,
-    "error_msg": "Kode Produk Tidak Ditemukan"
 }
 ```

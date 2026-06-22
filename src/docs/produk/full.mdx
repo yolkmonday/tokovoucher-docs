@@ -65,7 +65,10 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
                 "status": 1,
                 "kategori_id": 1,
                 "operator_id": 1,
-                "jenis_id": 1
+                "jenis_id": 1,
+                "price_gold": 1500,
+                "price_vip": 1490,
+                "price_vvip": 1480
             }
         ]
     },
@@ -109,7 +112,10 @@ https://api.tokovoucher.net/member/produk/full?member_code=[member_code]&signatu
 | kode_produk | String | Kode produk (digunakan untuk transaksi)     |
 | nama        | String | Nama produk                                 |
 | deskripsi   | String | Deskripsi produk                            |
-| price       | Int    | Harga jual sesuai level member yang login          |
+| price       | Int    | Harga jual sesuai level member yang login   |
+| price_gold  | Int    | Harga untuk level GOLD                      |
+| price_vip   | Int    | Harga untuk level VIP                       |
+| price_vvip  | Int    | Harga untuk level VVIP                      |
 | status      | Int    | Status aktif (`1` = aktif, `0` = nonaktif)  |
 | kategori_id | Int    | ID kategori produk                          |
 | operator_id | Int    | ID operator produk                          |

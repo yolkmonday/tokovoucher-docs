@@ -7,8 +7,9 @@
   link: "/cek-saldo"
 
 - label: List Produk
-  link: "/produk"
   items:
+    - label: "List Produk"
+      link: "/produk"
     - label: "List Produk Full"
       link: "/produk/full"
 
@@ -20,7 +21,6 @@
     - label: "Chatbot Telegram"
       link: "/chatbot/telegram"
 
-
 - label: Transaksi
   items:
     - label: "Metode POST"
@@ -31,13 +31,10 @@
       link: "/transaksi/get-text"
     - label: "Via W38s"
       link: "/transaksi/w38s"
-
-
-- label: "Transfer Bank"
-  link: "/bank-transfer"
-
-- label: "Ewallet Reload"
-  link: "/ewallet-reload"
+    - label: "Transfer Bank"
+      link: "/bank-transfer"
+    - label: "Ewallet Reload"
+      link: "/ewallet-reload"
 
 - label: Pascabayar
   items:

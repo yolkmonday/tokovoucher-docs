@@ -8,6 +8,9 @@
 
 - label: List Produk
   link: "/produk"
+  items:
+    - label: "List Produk Full"
+      link: "/produk/full"
 
 - label: Deposit
   link: "/deposit"
